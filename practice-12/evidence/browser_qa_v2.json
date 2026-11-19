@@ -1,0 +1,22 @@
+{
+  "siteVersion": 2,
+  "sourceCommit": "62264b8246f465057462b36537e56818920c9c76",
+  "desktopViewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "mobileViewport": {
+    "width": 390,
+    "height": 844
+  },
+  "publicScenarios": [
+    "Available",
+    "Overlap",
+    "Blocked A101",
+    "API error fallback",
+    "Fractional end rejected"
+  ],
+  "localMobile": "Blocked A101 timeout fallback, 1205 ms",
+  "consoleErrors": [],
+  "observed": "All statuses matched the deterministic checker. One room is shown. Public screenshot 07 is version 2."
+}

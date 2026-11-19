@@ -1,0 +1,15 @@
+
+> vite-react-typescript-starter@0.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/sulub/Downloads/Рабочая папка/AI-Driven Software Engineering/Practice_12/project
+
+ ✓ src/utils/booking.test.ts (21 tests) 5ms
+ ✓ src/utils/regression.test.ts (17 tests) 5ms
+
+ Test Files  2 passed (2)
+      Tests  38 passed (38)
+   Start at  14:44:50
+   Duration  1.41s (transform 77ms, setup 0ms, collect 124ms, tests 10ms, environment 0ms, prepare 1.82s)
+

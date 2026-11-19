@@ -1,0 +1,18 @@
+
+> vite-react-typescript-starter@0.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/Users/sulub/Downloads/Рабочая папка/AI-Driven Software Engineering/Practice_12/project
+
+ ✓ src/utils/booking.test.ts (21 tests) 5ms
+ ✓ src/utils/regression.test.ts (17 tests) 6ms
+ ✓ src/explanation/explanation.test.ts (45 tests) 1277ms
+ ✓ src/components/ExplanationPanel.test.tsx (8 tests) 2216ms
+   ✓ F-AC5: real App interactions > shows fallback after a real 1200 ms timeout 1238ms
+
+ Test Files  4 passed (4)
+      Tests  91 passed (91)
+   Start at  14:53:50
+   Duration  5.24s (transform 260ms, setup 0ms, collect 779ms, tests 3.50s, environment 1.14s, prepare 929ms)
+

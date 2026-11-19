@@ -1,0 +1,30 @@
+INDEPENDENT READ-ONLY REVIEW
+Reviewer: separate Codex subagent, authorized by the student on 19 November 2026.
+Inputs: practice assignment, baseline/candidate/final source comparison, README.md, AGENTS.md, F-AC1 to F-AC5, related caller files and test evidence.
+Scope: correctness, security, maintainability, performance and tests. No file edits, production actions or merge permission were granted to the reviewer.
+Independent test run before the final small corrections: 114/114 passed, 6 files, 15:00:58, duration 7.59 s.
+Typecheck/lint/build were read from real logs; the reviewer did not claim to rerun them.
+
+R1 MEDIUM CONFIRMED FIXED
+Candidate src/App.tsx:25 used parseInt on the end-minute input. For start 11:00, end 720.5, now 540, it silently checked end 720 and displayed Available. ReviewRegression.test.tsx:9-16 failed before repair. Strict formValues.ts:3-6 rejects fractional/malformed minutes. App.tsx:25-27 uses the parser. The original checker is unchanged. Independent tests confirm the repair.
+
+R2 MEDIUM CONFIRMED FIXED
+Candidate App.tsx:90,105,122 had labels without associated input IDs. The before-fix test reported that Start Time had no associated control. Final App.tsx:92,108,126 labels match IDs at 97,113,132. ReviewRegression.test.tsx:18-23 verifies the accessible names. No booking rule was changed.
+
+R3 LOW CONFIRMED FIXED AFTER INDEPENDENT REVIEW
+Candidate contract.ts:116 only counted own properties. An in-memory check confirmed that a response with inherited explanation and a differently named sole own property passed shape validation. This violated the exact output shape. Final contract.ts:116-118 explicitly requires the only own key to be explanation; explanation.test.ts:141-145 covers it. This is NOT a status-overwrite or arbitrary-text vulnerability: service.ts:38 separately requires approved factual text. Normal JSON/mock responses were unaffected.
+
+R4 LOW CONFIRMED NONBLOCKING
+adapter.ts:25 calls createPrompt(input) and discards the result. The mock output comes from factExplanation, not prompt interpretation. The allocation has negligible impact at this scale; no measured performance defect was found. Kept as a disclosed cleanup item. Prompt comparison is a contract/design comparison, never a live provider benchmark.
+
+R5 LOW CONFIRMED FIXED AFTER INDEPENDENT REVIEW
+The inherited Timeline.tsx:47-53 always rendered the now marker. Empty current time produced left:NaN% and tooltip Now: NaN:NaN, independently reproduced with renderToStaticMarkup. Final Timeline.tsx:47 hides the marker unless currentTime is finite; formValues already enforces the day range. ReviewRegression.test.tsx:43 also checks tooltip text. The initial text-only assertion would have missed the title attribute.
+
+R6 NONE UNSUPPORTED CONCERN REJECTED
+Concern evaluated: the explanation adapter can change availability or bookings. Code and tests contradict it. App.tsx:29-31 derives status only from checkAvailability; the panel receives explanation input and no status/booking setter; service.ts:35 provides a frozen minimal copy. Tests preserve decision/room objects and UI status through failures. No fix is justified for this claim. Future server/provider integration needs a separate review.
+
+COMPARISON WITH PRIMARY ASSISTANT INSPECTION
+The primary assistant found R1/R2 and obtained two failing reproductions before editing. Independent review confirmed both and added R3, R4 and R5. R3/R5 were then repaired; the reviewer inspected those exact edits without modifying files. R6 was rejected on data-flow evidence. This was code inspection and testing by assistants, not a claim that a human manually approved the result.
+
+FINAL REVIEW ADDENDUM
+R3 own-key check and regression are correct by inspection. R5 finite guard and tooltip assertion are correct by inspection. index.html removes a missing icon and unrelated Bolt social images and adds an accurate mock description. No new issue was found in these edits. R4 remains low/nonblocking. No high-severity blocker was found for a classroom mock. The reviewer did not perform human submission approval.

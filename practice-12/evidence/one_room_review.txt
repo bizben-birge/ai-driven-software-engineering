@@ -1,0 +1,8 @@
+FINAL ONE-ROOM COMPLIANCE REVIEW
+Read-only review of ec5928e..62264b8 accepted the one-room correction.
+App.tsx:20-22 derives only A101 as a copy of the fixture with a simulated blocked flag. The labelled checkbox resets hasChecked, unmounting the explanation. The key also includes roomBlocked.
+Updated UI tests cover blocked A101 and a pending response during the state change. The new regression covers blocking, explanation, unblocking, cleared explanation, restored Available status and unchanged fixture data.
+Independent SHA-256 comparison confirmed all six protected files match baseline.
+Reviewer read central logs: 116/116 passed; typecheck/lint/build passed. Reviewer did not rerun tests or edit files.
+The one-room ambiguity is resolved. No new blocker found. R4 remains a disclosed nonblocking mock cleanup item.
+Historical review line numbers refer to the candidate or reviewed revision ec5928e; the final UI layout shifts App.tsx and test line numbers.

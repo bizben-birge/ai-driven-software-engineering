@@ -1,0 +1,652 @@
+
+> vite-react-typescript-starter@0.0.0 test
+> vitest run src/components/ReviewRegression.test.tsx
+
+
+ RUN  v2.1.9 C:/Users/sulub/Downloads/Рабочая папка/AI-Driven Software Engineering/Practice_12/project
+
+ ❯ src/components/ReviewRegression.test.tsx (2 tests | 2 failed) 116ms
+   × Verified review findings > R1 rejects fractional end time instead of silently truncating it 102ms
+     → Unable to find an element with the text: Unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen bg-gradient-to-b from-slate-100 to-slate-200"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto max-w-3xl px-4 py-6 sm:py-10"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"mb-6 flex items-center gap-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-11 w-11 items-center justify-center rounded-xl bg-slate-800 text-white shadow-sm"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-building2"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"22"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"22"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 6h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 10h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 14h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 18h4"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-xl font-bold text-slate-900 sm:text-2xl"[39m
+            [36m>[39m
+              [0mSmart Campus Room Availability[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-sm text-slate-500"[39m
+            [36m>[39m
+              [0mCheck if a room is free for your requested time slot.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-2xl bg-white p-5 shadow-lg sm:p-7"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"grid gap-4 sm:grid-cols-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"sm:col-span-2"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"mb-1.5 block text-sm font-semibold text-slate-700"[39m
+              [36m>[39m
+                [0mSelect Room[0m
+              [36m</label>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-800 bg-slate-50 ring-1 ring-slate-800"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center gap-3"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 text-white"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33mclass[39m=[32m"lucide lucide-door-closed"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mheight[39m=[32m"18"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mstroke-linecap[39m=[32m"round"[39m
+                        [33mstroke-linejoin[39m=[32m"round"[39m
+                        [33mstroke-width[39m=[32m"2"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                        [33mwidth[39m=[32m"18"[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                      [36m>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"[39m
+                        [36m/>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M2 20h20"[39m
+                        [36m/>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M14 12v.01"[39m
+                        [36m/>[39m
+                      [36m</svg>[39m
+                    [36m</div>[39m
+                    [36m<div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"text-sm font-bold text-slate-800"[39m
+                      [36m>[39m
+                        [0mRoom A101[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"text-xs text-slate-400"[39m
+                      [36m>[39m
+                        [0mEngineering Block[0m
+                        [0m · [0m
+                        [0m40[0m
+                        [0m seats[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-200 hover:border-slate-300 hover:bg-slate-50"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center gap-3"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-500"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33mclass[39m=[32m"lucide lucide-door-closed"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mheight[39m=[32m"18"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mstroke-linecap[39m=[32m"round"[39m
+                        [33mstroke-linejoin[39m=[32m"round"[39m
+                        [33mstroke-width[39m=[32m"2"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                        [33mwidth[39m=[32m"18"[39m
+                 ...
+   × Verified review findings > R2 provides programmatic names for all time inputs 13ms
+     → Found a label with the text of: Start Time, however no form control was found associated to that label. Make sure you're using the "for" attribute or "aria-labelledby" attribute correctly.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen bg-gradient-to-b from-slate-100 to-slate-200"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto max-w-3xl px-4 py-6 sm:py-10"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"mb-6 flex items-center gap-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-11 w-11 items-center justify-center rounded-xl bg-slate-800 text-white shadow-sm"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-building2"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"22"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"22"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 6h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 10h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 14h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 18h4"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-xl font-bold text-slate-900 sm:text-2xl"[39m
+            [36m>[39m
+              [0mSmart Campus Room Availability[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-sm text-slate-500"[39m
+            [36m>[39m
+              [0mCheck if a room is free for your requested time slot.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-2xl bg-white p-5 shadow-lg sm:p-7"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"grid gap-4 sm:grid-cols-2"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"sm:col-span-2"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"mb-1.5 block text-sm font-semibold text-slate-700"[39m
+              [36m>[39m
+                [0mSelect Room[0m
+              [36m</label>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid gap-3 sm:grid-cols-2"[39m
+              [36m>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-800 bg-slate-50 ring-1 ring-slate-800"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center gap-3"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 text-white"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33mclass[39m=[32m"lucide lucide-door-closed"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mheight[39m=[32m"18"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mstroke-linecap[39m=[32m"round"[39m
+                        [33mstroke-linejoin[39m=[32m"round"[39m
+                        [33mstroke-width[39m=[32m"2"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                        [33mwidth[39m=[32m"18"[39m
+                        [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                      [36m>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"[39m
+                        [36m/>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M2 20h20"[39m
+                        [36m/>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M14 12v.01"[39m
+                        [36m/>[39m
+                      [36m</svg>[39m
+                    [36m</div>[39m
+                    [36m<div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"text-sm font-bold text-slate-800"[39m
+                      [36m>[39m
+                        [0mRoom A101[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"text-xs text-slate-400"[39m
+                      [36m>[39m
+                        [0mEngineering Block[0m
+                        [0m · [0m
+                        [0m40[0m
+                        [0m seats[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</button>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-200 hover:border-slate-300 hover:bg-slate-50"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"flex items-center gap-3"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-500"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33mclass[39m=[32m"lucide lucide-door-closed"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mheight[39m=[32m"18"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mstroke-linecap[39m=[32m"round"[39m
+                        [33mstroke-linejoin[39m=[32m"round"[39m
+                        [33mstroke-width[39m=[32m"2"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                        [33mwidth[39m=[32m"18"[39m
+                 ...
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/ReviewRegression.test.tsx > Verified review findings > R1 rejects fractional end time instead of silently truncating it
+TestingLibraryElementError: Unable to find an element with the text: Unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="min-h-screen bg-gradient-to-b from-slate-100 to-slate-200"
+    >
+      <div
+        class="mx-auto max-w-3xl px-4 py-6 sm:py-10"
+      >
+        <header
+          class="mb-6 flex items-center gap-3"
+        >
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-800 text-white shadow-sm"
+          >
+            <svg
+              class="lucide lucide-building2"
+              fill="none"
+              height="22"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="22"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"
+              />
+              <path
+                d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"
+              />
+              <path
+                d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"
+              />
+              <path
+                d="M10 6h4"
+              />
+              <path
+                d="M10 10h4"
+              />
+              <path
+                d="M10 14h4"
+              />
+              <path
+                d="M10 18h4"
+              />
+            </svg>
+          </div>
+          <div>
+            <h1
+              class="text-xl font-bold text-slate-900 sm:text-2xl"
+            >
+              Smart Campus Room Availability
+            </h1>
+            <p
+              class="text-sm text-slate-500"
+            >
+              Check if a room is free for your requested time slot.
+            </p>
+          </div>
+        </header>
+        <div
+          class="rounded-2xl bg-white p-5 shadow-lg sm:p-7"
+        >
+          <div
+            class="grid gap-4 sm:grid-cols-2"
+          >
+            <div
+              class="sm:col-span-2"
+            >
+              <label
+                class="mb-1.5 block text-sm font-semibold text-slate-700"
+              >
+                Select Room
+              </label>
+              <div
+                class="grid gap-3 sm:grid-cols-2"
+              >
+                <button
+                  class="flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-800 bg-slate-50 ring-1 ring-slate-800"
+                >
+                  <div
+                    class="flex items-center gap-3"
+                  >
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 text-white"
+                    >
+                      <svg
+                        class="lucide lucide-door-closed"
+                        fill="none"
+                        height="18"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="18"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"
+                        />
+                        <path
+                          d="M2 20h20"
+                        />
+                        <path
+                          d="M14 12v.01"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <div
+                        class="text-sm font-bold text-slate-800"
+                      >
+                        Room A101
+                      </div>
+                      <div
+                        class="text-xs text-slate-400"
+                      >
+                        Engineering Block
+                         · 
+                        40
+                         seats
+                      </div>
+                    </div>
+                  </div>
+                </button>
+                <button
+                  class="flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-200 hover:border-slate-300 hover:bg-slate-50"
+                >
+                  <div
+                    class="flex items-center gap-3"
+                  >
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-500"
+                    >
+                      <svg
+                        class="lucide lucide-door-closed"
+                        fill="none"
+                        height="18"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="18"
+                 ...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/ReviewRegression.test.tsx:14:19
+     12|     fireEvent.change(screen.getAllByRole('spinbutton')[0], { target: {…
+     13|     fireEvent.click(screen.getByRole('button', { name: 'Check Availabi…
+     14|     expect(screen.getByText('Unavailable')).toBeTruthy();
+       |                   ^
+     15|     expect(screen.queryByText('Available')).toBeNull();
+     16|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/components/ReviewRegression.test.tsx > Verified review findings > R2 provides programmatic names for all time inputs
+TestingLibraryElementError: Found a label with the text of: Start Time, however no form control was found associated to that label. Make sure you're using the "for" attribute or "aria-labelledby" attribute correctly.
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="min-h-screen bg-gradient-to-b from-slate-100 to-slate-200"
+    >
+      <div
+        class="mx-auto max-w-3xl px-4 py-6 sm:py-10"
+      >
+        <header
+          class="mb-6 flex items-center gap-3"
+        >
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-800 text-white shadow-sm"
+          >
+            <svg
+              class="lucide lucide-building2"
+              fill="none"
+              height="22"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="22"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"
+              />
+              <path
+                d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"
+              />
+              <path
+                d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"
+              />
+              <path
+                d="M10 6h4"
+              />
+              <path
+                d="M10 10h4"
+              />
+              <path
+                d="M10 14h4"
+              />
+              <path
+                d="M10 18h4"
+              />
+            </svg>
+          </div>
+          <div>
+            <h1
+              class="text-xl font-bold text-slate-900 sm:text-2xl"
+            >
+              Smart Campus Room Availability
+            </h1>
+            <p
+              class="text-sm text-slate-500"
+            >
+              Check if a room is free for your requested time slot.
+            </p>
+          </div>
+        </header>
+        <div
+          class="rounded-2xl bg-white p-5 shadow-lg sm:p-7"
+        >
+          <div
+            class="grid gap-4 sm:grid-cols-2"
+          >
+            <div
+              class="sm:col-span-2"
+            >
+              <label
+                class="mb-1.5 block text-sm font-semibold text-slate-700"
+              >
+                Select Room
+              </label>
+              <div
+                class="grid gap-3 sm:grid-cols-2"
+              >
+                <button
+                  class="flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-800 bg-slate-50 ring-1 ring-slate-800"
+                >
+                  <div
+                    class="flex items-center gap-3"
+                  >
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 text-white"
+                    >
+                      <svg
+                        class="lucide lucide-door-closed"
+                        fill="none"
+                        height="18"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="18"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"
+                        />
+                        <path
+                          d="M2 20h20"
+                        />
+                        <path
+                          d="M14 12v.01"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <div
+                        class="text-sm font-bold text-slate-800"
+                      >
+                        Room A101
+                      </div>
+                      <div
+                        class="text-xs text-slate-400"
+                      >
+                        Engineering Block
+                         · 
+                        40
+                         seats
+                      </div>
+                    </div>
+                  </div>
+                </button>
+                <button
+                  class="flex items-center justify-between rounded-xl border-2 p-3 text-left transition-all border-slate-200 hover:border-slate-300 hover:bg-slate-50"
+                >
+                  <div
+                    class="flex items-center gap-3"
+                  >
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-500"
+                    >
+                      <svg
+                        class="lucide lucide-door-closed"
+                        fill="none"
+                        height="18"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="18"
+                 ...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText node_modules/@testing-library/dom/dist/queries/label-text.js:108:40
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/ReviewRegression.test.tsx:20:19
+     18|   it('R2 provides programmatic names for all time inputs', () => {
+     19|     render(<App />);
+     20|     expect(screen.getByLabelText('Start Time')).toBeTruthy();
+       |                   ^
+     21|     expect(screen.getByLabelText('End Time (min after midnight)')).toB…
+     22|     expect(screen.getByLabelText('Current Time (minutes after midnight…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  14:55:00
+   Duration  2.94s (transform 84ms, setup 0ms, collect 484ms, tests 116ms, environment 1.10s, prepare 127ms)
+

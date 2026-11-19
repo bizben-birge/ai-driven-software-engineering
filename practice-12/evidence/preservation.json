@@ -1,0 +1,26 @@
+{
+  "src/utils/validation.ts": {
+    "baseline": "d1bc0302582e1dfb2086aabde7fe84b860b0474a7b777e8c916031e3a2495959",
+    "final": "d1bc0302582e1dfb2086aabde7fe84b860b0474a7b777e8c916031e3a2495959"
+  },
+  "src/utils/bookingRules.ts": {
+    "baseline": "1304c77897a2688e91c024bc70a860ebf3e6e0426fa287ed57d44ff792c5ffac",
+    "final": "1304c77897a2688e91c024bc70a860ebf3e6e0426fa287ed57d44ff792c5ffac"
+  },
+  "src/sampleData.ts": {
+    "baseline": "7941bf7d1ae71629298732d831cd47d2def4768f2097c3562bfb5ebb4a1eaa82",
+    "final": "7941bf7d1ae71629298732d831cd47d2def4768f2097c3562bfb5ebb4a1eaa82"
+  },
+  "src/types.ts": {
+    "baseline": "ac8d0c8ab95f670294fd8149cafcceabfd6a7824204d2703d4024957f4deb717",
+    "final": "ac8d0c8ab95f670294fd8149cafcceabfd6a7824204d2703d4024957f4deb717"
+  },
+  "src/utils/booking.test.ts": {
+    "baseline": "d3b8707544c34200f8421ea1d9676d5afac7900efcd2c4fe0191ad100f224b2b",
+    "final": "d3b8707544c34200f8421ea1d9676d5afac7900efcd2c4fe0191ad100f224b2b"
+  },
+  "src/utils/regression.test.ts": {
+    "baseline": "9921b04c19ee4896dc746444c55d8d3a596594b9363360756b834852ff0282ed",
+    "final": "9921b04c19ee4896dc746444c55d8d3a596594b9363360756b834852ff0282ed"
+  }
+}
