@@ -9,7 +9,8 @@ Coursework by Sulubekov Dias, 24B032038. This repository starts with Practice 12
 - [Editable report](practice-12/docs/Practice_12_Report.docx)
 - [Screenshots](practice-12/screenshots/)
 - [Verification evidence](practice-12/evidence/)
-- [Public live demo](https://smart-campus-practice-12-dias.qorsastudio.chatgpt.site)
+- [Bolt workspace (account access)](https://bolt.new/~/sb1-ux8l63wx)
+- [Public live demo](https://smart-campus-practic-bbg1.bolt.host)
 
 The demo uses one fictional room and a labelled local mock explanation. There are no model API calls, login, database or real reservations. The final application passed 116 tests, typecheck, lint and a production build. The main PDF is also the email attachment; source archives are not required.
 

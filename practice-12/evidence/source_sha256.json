@@ -1,10 +1,12 @@
 {
-  "publishedSourceCommit": "62264b8246f465057462b36537e56818920c9c76",
+  "applicationSourceReference": "bc470ac1688a8d6d35b2c9a4e6f3894d234a25ed",
+  "boltProject": "https://bolt.new/~/sb1-ux8l63wx",
+  "liveDemo": "https://smart-campus-practic-bbg1.bolt.host",
+  "note": "36 Bolt source files; README updated with final publication links after initial transfer",
   "files": {
     ".gitignore": "6ae83bdb0e630c92f89f974c893b6cddd9490371a50a59b04080da0c2ccef422",
-    ".openai/hosting.json": "949a9ca0153827a3dcf28d62b5e63f4d04d288d1f1edf5150bc65e840d21452a",
     "AGENTS.md": "db8c74eeb75c6389b8c19554b2f812d3e14ee6c04fabb6aacc4f11588fe3d84c",
-    "README.md": "5484d9d6afb79334f42878e493b4818e87ecc453344f34ab72430f3386fe3b0f",
+    "README.md": "0012cb08dc50fd5232109a3792ed9e4e52a9182ab30821795817903fd96e6483",
     "eslint.config.js": "fa3cc12579fb0ef678a3153b31ec396d81ef2fec284a1a5ecb779c0ff336cfe0",
     "index.html": "77bf75cd1a20592dcb67171f11bcbb4a458aa20ce115b8891f01e43159ec8b1e",
     "package-lock.json": "84d2d89c121cadbbcc45e672e8f3e90786465ecfb08e7af64807629a5d9525f7",

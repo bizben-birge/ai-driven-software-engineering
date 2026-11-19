@@ -1,0 +1,238 @@
+										4796 group (регион) Chat
+											4797 group (группа)
+												4798 text (текстовый) I've successfully imported your project. I'm ready to assist you with analyzing and improving your code.
+												4799 button (кнопка) Copy response
+												4800 button (кнопка) Good response
+												4801 button (кнопка) Bad response
+												4802 button (кнопка) More actions ID: radix-_r_6p_
+												4803 text (текстовый) Importing Bolt Project
+												4804 text (текстовый) Version
+												4805 text (текстовый) 1
+												4806 text (текстовый) at
+												4807 text (текстовый) Nov 19 4:09 PM
+												4808 button (кнопка) Bookmark to revisit in version history
+												4809 button (кнопка) Preview this version
+												4810 button (кнопка) Restore this version
+												4811 text (текстовый) Continue this duplicated Practice 11 project as Practice 12. The original Practice 11 must remain unchanged. Version 1 of this copy is the baseline checkpoint. I already prepared and reviewed the feature with Codex; bring those exact tested files into THIS Bolt project, then verify them here. Public repository:
+												4812 text (текстовый) https://github.com/bizben-birge/ai-driven-software-engineering
+												4813 text (текстовый) at commit bc470ac1688a8d6d35b2c9a4e6f3894d234a25ed. Source is in practice-12/. The exact file list and SHA-256 hashes are in practice-12/evidence/source_sha256.json. Download only the listed source/config files from that pinned commit, verify hashes, and install them at this Bolt project root. EXCLUDE .openai/hosting.json because it belongs to the previous hosting service. Do not import docs, screenshots, evidence, archives, node_modules or Git metadata. Do not redesign or regenerate the existing code. The deterministic checker, sampleData, types, bookingRules and the 38 original booking/regression tests must stay byte-identical. The final UI shows only A101 with a labelled classroom blocked-state toggle and an optional Explain availability button. It uses a structured local mock, no live provider, no key, login or database. Run npm ci, npm test, npm run typecheck, npm run lint and npm run build. Expected final test count is 116. Report actual command results and environment, not assumed successes. If WebContainer workers need limits, retry tests with --maxWorkers=1 --minWorkers=1 and disclose it. Do not weaken tests, alter booking rules, add secrets, connect services or publish yet. Start the preview after checks. In your final response state imported file count/hash verification, tests and any blocker. This is a source transfer into the course Bolt workflow, not a claim that Bolt originally authored the Codex work.
+												4814 button (кнопка) Thoughts
+												4815 text (текстовый) I'll start by fetching the SHA-256 manifest and understanding the file list from the pinned commit, then download and verify each file.
+												4816 button (кнопка) 0 1 2 3 4 5 6 7 8 9 commands executed
+												4817 text (текстовый) I have the manifest with 36 files (35 after excluding
+												4818 text (текстовый) .openai/hosting.json
+												4819 text (текстовый) ). Let me set up a todo plan and download all listed files, verifying hashes.
+												4820 button (кнопка) Plan 6/6 completed
+												4821 text (текстовый) All tasks are complete. Here is the full report:
+												4822 text (заголовок) Source Transfer Report — Practice 12
+												4823 text (заголовок) Imported files & hash verification
+												4824 list (список)
+													4825 list item (элемент списка) 36 files downloaded from the pinned commit (bc470ac...) in practice-12/ of the public repo, excluding .openai/hosting.json as instructed.
+														4826 text (текстовый) 36 files
+														4827 text (текстовый) bc470ac...
+														4828 text (текстовый) practice-12/
+														4829 text (текстовый) .openai/hosting.json
+													4830 list item (элемент списка) All 36 SHA-256 hashes matched the manifest (source_sha256.json) — verified both at download and after installation at the project root.
+														4831 text (текстовый) All 36 SHA-256 hashes matched
+														4832 text (текстовый) source_sha256.json
+													4833 list item (элемент списка) The deterministic checker, sampleData, types, bookingRules, and the 38 original booking/regression tests remain byte-identical (hashes confirmed).
+														4834 text (текстовый) sampleData
+														4835 text (текстовый) types
+														4836 text (текстовый) bookingRules
+													4837 list item (элемент списка) No docs, screenshots, evidence files, archives, node_modules, or Git metadata were imported.
+														4838 text (текстовый) node_modules
+												4839 text (заголовок) Command results (actual, not assumed)
+												4840 table (таблицу)
+													4841 data item (строка)
+														4842 data item (заголовок столбца) Command
+														4843 data item (заголовок столбца) Result
+													4844 data item (строка)
+														4845 data item (элемент) npm ci
+														4846 data item (элемент) 326 packages installed, exit 0
+													4847 data item (строка)
+														4848 data item (элемент) npm test
+														4849 data item (элемент) 116 tests passed (6 files), exit 0 — matches expected count
+													4850 data item (строка)
+														4851 data item (элемент) npm run typecheck
+														4852 data item (элемент) Clean, exit 0
+													4853 data item (строка)
+														4854 data item (элемент) npm run lint
+														4855 data item (элемент) Clean, exit 0
+													4856 data item (строка)
+														4857 data item (элемент) npm run build
+														4858 data item (элемент) Built successfully (165 KB JS / 14 KB CSS), exit 0
+												4859 text (заголовок) Test breakdown
+												4860 list (список)
+													4861 list item (элемент списка) booking.test.ts: 21 tests
+														4862 text (текстовый) booking.test.ts
+													4863 list item (элемент списка) regression.test.ts: 17 tests
+														4864 text (текстовый) regression.test.ts
+													4865 list item (элемент списка) explanation.test.ts: 46 tests
+														4866 text (текстовый) explanation.test.ts
+													4867 list item (элемент списка) formValues.test.ts: 19 tests
+														4868 text (текстовый) formValues.test.ts
+													4869 list item (элемент списка) ReviewRegression.test.tsx: 5 tests
+														4870 text (текстовый) ReviewRegression.test.tsx
+													4871 list item (элемент списка) ExplanationPanel.test.tsx: 8 tests
+														4872 text (текстовый) ExplanationPanel.test.tsx
+													4873 list item (элемент списка) Total: 116 passed
+														4874 text (текстовый) Total: 116 passed
+												4875 text (текстовый) No
+												4876 text (текстовый) --maxWorkers=1
+												4877 text (текстовый) workaround was needed — all tests passed on the default configuration.
+												4878 text (заголовок) Preview
+												4879 text (текстовый) The preview server cannot be launched from this environment (long-lived dev servers are blocked). The production build completed successfully, so the preview will serve correctly when the environment runs it.
+												4880 text (заголовок) Blockers
+												4881 text (текстовый) None. All checks passed, no tests were weakened, no booking rules altered, no secrets or services connected.
+												4882 text (текстовый) This is a source transfer of Codex-reviewed work into the Bolt course workflow — not a claim that Bolt authored the original code.
+												4883 button (кнопка) Copy response
+												4884 button (кнопка) Good response
+												4885 button (кнопка) Bad response
+												4886 button (кнопка) More actions ID: radix-_r_de_
+												4887 text (текстовый) Update project files and run checks
+												4888 text (текстовый) Version
+												4889 text (текстовый) 2
+												4890 text (текстовый) at
+												4891 text (текстовый) Nov 19 4:16 PM
+												4892 button (кнопка) Bookmark to revisit in version history
+												5131 button (кнопка) Preview this version
+												5132 button (кнопка) Restore this version
+												4893 text (текстовый) The preview is visibly running correctly in the Bolt UI. For the report, please run only node --version and npm --version, and report the environment used for the completed tests. Also confirm the manifest total is 37 entries and 36 imported after excluding .openai/hosting.json (your first narrative had a count typo). Do not edit code or run tests again. Do not publish; I will use the Publish UI.
+												4894 button (кнопка) Report Node and npm versions
+												4895 text (заголовок) Environment & Manifest Correction
+												4896 text (текстовый) Environment used for the completed tests:
+												4897 list (список)
+													4898 list item (элемент списка) Node.js: v22.23.1
+														4899 text (текстовый) v22.23.1
+													4900 list item (элемент списка) npm: 10.9.8
+														4901 text (текстовый) 10.9.8
+												4902 text (текстовый) Manifest count correction:
+												4903 text (текстовый) The manifest (
+												4904 text (текстовый) source_sha256.json
+												4905 text (текстовый) ) contains
+												4906 text (текстовый) 37 entries
+												4907 text (текстовый) total. After excluding
+												4908 text (текстовый) .openai/hosting.json
+												4909 text (текстовый) ,
+												4910 text (текстовый) 36 files
+												4911 text (текстовый) were imported and hash-verified. My first narrative incorrectly stated "36 files (35 after excluding)" in one place — the correct count is 37 entries in the manifest, 36 imported.
+												4912 text (текстовый) All prior check results stand as reported:
+												4913 text (текстовый) npm ci
+												4914 text (текстовый) (exit 0),
+												4915 text (текстовый) npm test
+												4916 text (текстовый) (116 passed, exit 0),
+												4917 text (текстовый) npm run typecheck
+												4918 text (текстовый) (exit 0),
+												4919 text (текстовый) npm run lint
+												4920 text (текстовый) (exit 0),
+												4921 text (текстовый) npm run build
+												4922 text (текстовый) (exit 0). No code edited, no tests re-run, no publish performed.
+												4923 button (кнопка) Copy response
+												4924 button (кнопка) Good response
+												4925 button (кнопка) Bad response
+												4926 button (кнопка) More actions ID: radix-_r_en_
+												4927 text (текстовый) Publish this application.
+												4928 text (текстовый) Your site has been successfully published! You can view it at:
+												4929 hyperlink (ссылка) https://smart-campus-practic-bbg1.bolt.host Description: https://smart-campus-practic-bbg1.bolt.host Value: https://smart-campus-practic-bbg1.bolt.host/
+												4930 button (кнопка) Copy URL
+												4931 text (текстовый) To add a custom domain or purchase one through Bolt, upgrade to
+												4932 button (кнопка) Bolt Pro
+												4933 button (кнопка) Copy response
+												4934 button (кнопка) Good response
+												4935 button (кнопка) Bad response
+												4936 button (кнопка) More actions ID: radix-_r_fr_
+												5032 text (текстовый) Documentation-only sync after publication. Replace README.md with exactly the UTF-8 contents below, preserving the final newline. Expected SHA-256: 0012cb08dc50fd5232109a3792ed9e4e52a9182ab30821795817903fd96e6483. Verify that hash and report it. Do not edit any other file, change application behavior, rerun tests, connect GitHub or republish. The live demo already passed public checks. The Bolt editor requires project access; the demo and GitHub source are public.
+												5033 text (текстовый) BEGIN README.md
+												5034 text (текстовый) # Smart Campus Practice 12
+												5035 text (текстовый) An optional explanation for the existing room availability checker. The classroom build uses a local mock, not a live LLM. It makes no provider calls and needs no API key. The existing booking checker alone decides Available or Unavailable.
+												5036 text (текстовый) Student: Sulubekov Dias, 24B032038. Classes: Thursday, 16:00-17:00 (lesson 14:00-17:00).
+												5037 text (текстовый) Live demo (public, no sign-in):
+												5038 text (текстовый) https://smart-campus-practic-bbg1.bolt.host
+												5039 text (текстовый) Bolt workspace (project account access):
+												5040 text (текстовый) https://bolt.new/~/sb1-ux8l63wx
+												5041 text (текстовый) Source and submission files:
+												5042 text (текстовый) https://github.com/bizben-birge/ai-driven-software-engineering/tree/main/practice-12
+												5043 text (текстовый) Only A101 is shown. The labelled blocked-state toggle changes its classroom scenario without changing stored bookings. The two original fixtures remain unchanged for baseline regression tests.
+												5044 text (текстовый) ## Run
+												5045 text (текстовый) Verified locally with Node.js 24.13.0 / npm 11.6.2 and in Bolt with Node.js 22.23.1 / npm 10.9.8. Both runs passed all 116 tests, typecheck, lint and build. From this directory:
+												5046 button (кнопка) Copy code
+												5047 group (группа)
+													5048 text (текстовый) npm ci
+													5049 text (текстовый)
+													5050 text (текстовый) npm run dev
+													5051 text (текстовый)
+													5052 text (текстовый) npm test
+													5053 text (текстовый)
+													5054 text (текстовый) npm run typecheck
+													5055 text (текстовый)
+													5056 text (текстовый) npm run lint
+													5057 text (текстовый)
+													5058 text (текстовый) npm run build
+													5059 text (текстовый)
+													5060 text (текстовый) npm run preview
+													5061 text (текстовый)
+												5062 text (текстовый) All old tests remain in src/utils. New feature tests are in src/explanation and UI tests in src/components. No external provider or real data is used.
+												5063 text (текстовый) ## Feature contract
+												5064 text (текстовый) User story: As a student, I want a short explanation of room availability so I understand the decision.
+												5065 list (список)
+													5066 list item (элемент списка) F-AC1: existing availability and overlap rules remain unchanged.
+													5067 list item (элемент списка) F-AC2: explanations agree with the deterministic result and invent no booking details.
+													5068 list item (элемент списка) F-AC3: empty, malformed and overly long input is rejected before the adapter.
+													5069 list item (элемент списка) F-AC4: timeout, simulated API error or missing key produces a safe deterministic fallback.
+													5070 list item (элемент списка) F-AC5: the UI distinguishes confirmed status from generated mock text and fallback.
+												5071 text (текстовый) Input has exactly roomLabel, start, end, isAvailable and reasonCode. roomLabel is 1-60 ASCII letters, digits, spaces, underscores or hyphens, with no surrounding whitespace. Minutes are integers in 0-1440. An INVALID_TIME explanation may use null for an invalid endpoint. isAvailable is a Boolean; only AVAILABLE may pair with true. Other reason codes are INVALID_TIME, INVALID_CURRENT_TIME, PAST_TIME, TOO_LONG, BLOCKED, OVERLAP and OTHER_UNAVAILABLE. A primary reason is projected from the first existing checker reason; the confirmed panel still shows every reason.
+												5072 text (текстовый) The adapter output is an object with exactly one explanation string, 1-320 characters and at most two sentences. Responses must match the approved explanation for the supplied status and reason. This deliberately strict classroom contract rejects unsupported facts; it is not a general solution to semantic validation of arbitrary LLM prose.
+												5073 text (текстовый) ## Flow and trust boundary
+												5074 text (текстовый) Form -> existing checkAvailability -> confirmed result -> minimal structured context -> input validator -> mock adapter -> format and factual validation -> explanation UI.
+												5075 text (текстовый) The confirmed result is rendered separately. No booking list, person name or booking description enters the adapter. It receives a frozen copy and has no setter for confirmed status or bookings. Error paths use local facts. The service times out after 1200 ms and cancels its mock timer. Input changes hide and remount the explanation panel, so an older response cannot replace the new result.
+												5076 text (текстовый) For this explicitly labelled mock, the adapter runs in the browser and no network boundary is crossed. With a real provider, replace this boundary with a server endpoint: browser -> server validates request and recomputes deterministic status -> server provider adapter -> output validation -> browser. Provider keys must exist only on the server. That extension is outside this submission.
+												5077 text (текстовый) ## Demonstration
+												5078 list (список)
+													5079 list item (элемент списка) Room A101, 11:00-720, current time 540: Available. Click Explain availability.
+													5080 list item (элемент списка) Room A101, 10:30-690: overlap, Unavailable.
+													5081 list item (элемент списка) Enable Classroom simulation: block A101, then check again: Unavailable.
+													5082 list item (элемент списка) Use the Classroom failure simulation section to try timeout, API failure, unavailable key, malformed response and conflicting response. These are labelled local fault simulations.
+													5083 list item (элемент списка) Change any input during an explanation and recheck; no old explanation should appear.
+												5084 text (текстовый) The mock uses deterministic text templates. prompts.ts contains three prompts and a selected system/context contract for comparison; prompt wording is not interpreted by the mock. Mock latency and zero provider cost do not predict live model latency, price or quality.
+												5085 text (текстовый) ## Bolt continuation and baseline
+												5086 text (текстовый) The final Practice 11 Bolt project (
+												5087 text (текстовый) https://bolt.new/p/72857715
+												5088 text (текстовый) ) was duplicated into this Practice 12 workspace. Version 1 preserves that checkpoint. Codex prepared and reviewed the feature; Bolt imported 36 checked files from GitHub commit bc470ac1688a8d6d35b2c9a4e6f3894d234a25ed, verified every SHA-256, ran the checks, and published the demo. The obsolete hosting configuration was excluded. Bolt Standard was the visible assistant option; its exact model/version was not shown.
+												5089 text (текстовый) Reconstructed from Assignment_04/smart-campus-a4-initial-source.zip (Practice 10 checkpoint 1b5b5cc), overlaid with the final Practice_11 App.tsx, validation.ts, regression.test.ts and AGENTS.md. Before feature edits: 38 tests passed, typecheck/lint/build passed. The untouched source checkpoint and SHA-256 manifest are retained in the local work folder, outside the hosted project.
+												5090 text (текстовый) ## Submission materials
+												5091 text (текстовый) The GitHub practice-12 folder contains the individual source files, README.pdf, the report in docs, screenshots and evidence. The main report PDF is also sent as the email attachment. No ZIP or other source archive is needed.
+												5092 text (текстовый) The report covers Tasks 1-7, three prompt designs with the same mock reference output, 17 observed cases, independent review and the fixes. Historical review line numbers refer to the candidate or the earlier reviewed revision; evidence identifies that context. END README.md
+												5097 button (кнопка) Thoughts
+												5099 button (кнопка) 0 1 2 3 4 5 6 7 8 9 actions taken
+												5100 text (текстовый) The hash doesn't match. Let me check the file ending — it may be a trailing newline issue.
+												5102 button (кнопка) 0 1 2 3 4 5 6 7 8 9 commands executed
+												5103 text (текстовый) The file has the trailing newline. Let me compute the hash without the final newline to check, and also check if the expected hash was computed differently.
+												5104 button (кнопка) Check hash variations
+												5106 text (текстовый) Neither matches. Let me check if there's a difference in line endings — the expected hash might be for the content with
+												5107 text (текстовый) \r\n
+												5108 text (текстовый) or without the final newline. Let me also re-examine the content carefully for any whitespace differences by writing the content to a temp file and comparing byte-for-byte.
+												5109 button (кнопка) Check CRLF and no-trailing-newline hash variants
+												5110 text (текстовый) The expected hash
+												5111 text (текстовый) 0012cb08...
+												5112 text (текстовый) matches CRLF (Windows) line endings. Let me write the file with CRLF line endings.
+												5114 button (кнопка) 0 1 2 3 4 5 6 7 8 9 commands executed
+												5115 text (текстовый) Hash verified. The README.md has been replaced with the exact content you provided using CRLF line endings (matching the expected hash), with the final newline preserved.
+												5116 text (текстовый) SHA-256 verified:
+												5117 text (текстовый)
+												5118 text (текстовый) 0012cb08dc50fd5232109a3792ed9e4e52a9182ab30821795817903fd96e6483
+												5119 text (текстовый) — matches the expected value exactly.
+												5120 text (текстовый) No other files were edited, no tests re-run, no GitHub connection or republish performed.
+												5121 button (кнопка) Copy response
+												5122 button (кнопка) Good response
+												5123 button (кнопка) Bad response
+												5124 button (кнопка) More actions ID: radix-_r_jh_
+												5133 text (текстовый) Update README.md with CRLF line endings
+												5134 text (текстовый) Version
+												5135 text (текстовый) 3
+												5136 text (текстовый) at
+												5137 text (текстовый) Nov 19 4:28 PM
+												5138 button (кнопка) Bookmark to revisit in version history
+										5125 text (текстовый) 79K
+										5126 text (текстовый) daily tokens remaining.
+										5127 button (кнопка) Switch to Pro for more usage
+										5128 button (кнопка) Dismiss

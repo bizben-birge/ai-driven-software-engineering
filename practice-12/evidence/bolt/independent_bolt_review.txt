@@ -1,0 +1,7 @@
+Independent read-only review, 19 November 2026
+Reviewer: existing user-authorized /root/review_practice12 agent
+
+No new blockers found. The Bolt transfer, Codex authorship, 116 tests, local/Bolt environment differences and public demo versus restricted project editor are described consistently.
+Local README SHA-256 matches the Bolt confirmation: 0012cb08dc50fd5232109a3792ed9e4e52a9182ab30821795817903fd96e6483.
+The known overlap/API-failure caption corrections are present in build_report.py. The conclusion applies to the PDF rebuilt from that script.
+The reviewer did not edit files, operate the UI, publish or rerun tests.

@@ -1,0 +1,39 @@
+{
+  "live_url": "https://smart-campus-practic-bbg1.bolt.host",
+  "project_url": "https://bolt.new/~/sb1-ux8l63wx",
+  "baseline_project_url": "https://bolt.new/p/72857715",
+  "checkpoint": "Duplicate of Practice 11, Version 1, 19 November 2026 16:09",
+  "tests_passed": 116,
+  "hashes_matched": 36,
+  "environment": "Bolt verification environment: Node.js v22.23.1, npm 10.9.8 (reported by executed Bolt commands)",
+  "import_commit": "bc470ac1688a8d6d35b2c9a4e6f3894d234a25ed",
+  "test_source": "Bolt command-result report visible in the project chat; 116 tests across 6 files; default workers",
+  "checks": {
+    "npm ci": 0,
+    "npm test": 0,
+    "npm run typecheck": 0,
+    "npm run lint": 0,
+    "npm run build": 0
+  },
+  "publication": "Published status and bolt.host URL observed in Bolt UI",
+  "unauthenticated_browser": true,
+  "project_editor_access": "Account/project access required; public grading uses the live demo and GitHub source",
+  "desktop_viewport": "1280x900",
+  "mobile_viewport": "390x844",
+  "public_browser_checks": [
+    "Available with matching explanation",
+    "Overlap unavailable",
+    "Blocked A101 unavailable",
+    "API failure fallback preserves Available",
+    "720.5 rejected as invalid",
+    "Mobile timeout fallback preserves Available"
+  ],
+  "mobile_timeout_observed_ms": 1215,
+  "notes": "Bolt initially misstated the manifest count, then corrected it to 37 total and 36 imported. Its execution tool could not start a long-lived server; the Bolt preview itself was visibly running and publication worked. No application code was changed during transfer.",
+  "readme_sync": {
+    "version": 3,
+    "sha256": "0012cb08dc50fd5232109a3792ed9e4e52a9182ab30821795817903fd96e6483",
+    "verification": "Bolt response confirms matching SHA-256 with CRLF and final newline; no other edits"
+  },
+  "browser_console_errors": []
+}

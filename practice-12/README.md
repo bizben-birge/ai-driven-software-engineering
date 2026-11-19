@@ -4,14 +4,16 @@ An optional explanation for the existing room availability checker. The classroo
 
 Student: Sulubekov Dias, 24B032038. Classes: Thursday, 16:00-17:00 (lesson 14:00-17:00).
 
-Live demo: https://smart-campus-practice-12-dias.qorsastudio.chatgpt.site
+Live demo (public, no sign-in): https://smart-campus-practic-bbg1.bolt.host
+
+Bolt workspace (project account access): https://bolt.new/~/sb1-ux8l63wx
 
 Source and submission files: https://github.com/bizben-birge/ai-driven-software-engineering/tree/main/practice-12
 
 Only A101 is shown. The labelled blocked-state toggle changes its classroom scenario without changing stored bookings. The two original fixtures remain unchanged for baseline regression tests.
 
 ## Run
-Tested with Node.js 24.13.0 and npm 11.6.2. From this directory:
+Verified locally with Node.js 24.13.0 / npm 11.6.2 and in Bolt with Node.js 22.23.1 / npm 10.9.8. Both runs passed all 116 tests, typecheck, lint and build. From this directory:
 
 ```text
 npm ci
@@ -54,7 +56,9 @@ For this explicitly labelled mock, the adapter runs in the browser and no networ
 
 The mock uses deterministic text templates. prompts.ts contains three prompts and a selected system/context contract for comparison; prompt wording is not interpreted by the mock. Mock latency and zero provider cost do not predict live model latency, price or quality.
 
-## Baseline
+## Bolt continuation and baseline
+The final Practice 11 Bolt project (https://bolt.new/p/72857715) was duplicated into this Practice 12 workspace. Version 1 preserves that checkpoint. Codex prepared and reviewed the feature; Bolt imported 36 checked files from GitHub commit bc470ac1688a8d6d35b2c9a4e6f3894d234a25ed, verified every SHA-256, ran the checks, and published the demo. The obsolete hosting configuration was excluded. Bolt Standard was the visible assistant option; its exact model/version was not shown.
+
 Reconstructed from Assignment_04/smart-campus-a4-initial-source.zip (Practice 10 checkpoint 1b5b5cc), overlaid with the final Practice_11 App.tsx, validation.ts, regression.test.ts and AGENTS.md. Before feature edits: 38 tests passed, typecheck/lint/build passed. The untouched source checkpoint and SHA-256 manifest are retained in the local work folder, outside the hosted project.
 
 ## Submission materials
