@@ -1,0 +1,92 @@
+diff --git a/src/App.test.tsx b/src/App.test.tsx
+index b03d813..7eb1a9d 100644
+--- a/src/App.test.tsx
++++ b/src/App.test.tsx
+@@ -64,4 +64,14 @@ describe('App UI behaviour (integration)', () => {
+     setValue(/End Time/, '700');
+     expect(screen.queryByText('Unavailable')).toBeNull();
+   });
++
++  it('UI-5: an empty Current Time field never makes a past slot available (AC-A)', () => {
++    render(<App />);
++    setValue(/Start Time/, '05:00');
++    setValue(/End Time/, '360');
++    setValue(/Current Time/, '');
++    fireEvent.click(screen.getByRole('button', { name: 'Check Availability' }));
++    expect(screen.getByText('Unavailable')).toBeTruthy();
++    expect(screen.getByText(/Current time must be between 0 and 1440/)).toBeTruthy();
++  });
+ });
+diff --git a/src/domain/availability.test.ts b/src/domain/availability.test.ts
+index 35b9272..5baa8e1 100644
+--- a/src/domain/availability.test.ts
++++ b/src/domain/availability.test.ts
+@@ -231,4 +231,13 @@ describe('checkAvailability — acceptance criteria AC1–AC6', () => {
+       ).toContain(c.keyword);
+     }
+   });
++
++  it('REG-CT: rejects non-finite or out-of-range current time (AC-A)', () => {
++    const room = makeRoom();
++    for (const now of [NaN, -1, 1441]) {
++      const r = checkAvailability(room, 300, 360, now);
++      expectUnavailable(r, `now=${now}`);
++      expect(r.reasons.join(' ')).toContain('Current time must be between');
++    }
++  });
+ });
+diff --git a/src/domain/availability.ts b/src/domain/availability.ts
+index e6db2a0..0c3401e 100644
+--- a/src/domain/availability.ts
++++ b/src/domain/availability.ts
+@@ -21,6 +21,9 @@ export function validateInterval(
+   if (start >= end) {
+     return invalid('Start time must be before end time.');
+   }
++  if (!Number.isFinite(currentTime) || currentTime < 0 || currentTime > MINUTE_IN_DAY) {
++    return invalid(`Current time must be between 0 and ${MINUTE_IN_DAY} (00:00–24:00).`);
++  }
+   if (start <= currentTime) {
+     return invalid(`Start time must be after the current time (${currentTime} min).`);
+   }
+diff --git a/src/domain/bookingRequest.test.ts b/src/domain/bookingRequest.test.ts
+index 35b9201..dbe77a7 100644
+--- a/src/domain/bookingRequest.test.ts
++++ b/src/domain/bookingRequest.test.ts
+@@ -13,7 +13,6 @@ const FORM_INPUTS: [string, string, string][] = [
+   ['11:00', '720', '540'],
+   ['12:00', '841', '540'],
+   ['08:00', '600', '540'],
+-  ['05:00', '360', ''],
+   ['05:00', '360', '-1'],
+   ['', '', '540'],
+   ['10:00', '630.75', '540'],
+@@ -29,7 +28,15 @@ describe('parseBookingRequest (Task 03 refactoring, behaviour must stay identica
+     const parsed = parseBookingRequest('', '630.75', '');
+     expect(parsed.startMin).toBeNaN();
+     expect(parsed.endMin).toBe(630);
+-    expect(parsed.currentTime).toBe(0);
++    expect(parsed.currentTime).toBeNaN();
++  });
++
++  it('PARSE-4: empty current time becomes NaN, not 0 (AC-A fix; the old inline parsing gave 0)', () => {
++    const room = makeRoom();
++    expect(oldInlineParsing('05:00', '360', '').currentTime).toBe(0);
++    const parsed = parseBookingRequest('05:00', '360', '');
++    expect(parsed.currentTime).toBeNaN();
++    expect(checkAvailability(room, parsed.startMin, parsed.endMin, parsed.currentTime).available).toBe(false);
+   });
+ 
+   it.each(FORM_INPUTS)('PARSE-3: same result as the old inline parsing for %s / %s / %s', (start, end, now) => {
+diff --git a/src/domain/bookingRequest.ts b/src/domain/bookingRequest.ts
+index c9663e5..be35dc2 100644
+--- a/src/domain/bookingRequest.ts
++++ b/src/domain/bookingRequest.ts
+@@ -14,6 +14,6 @@ export function parseBookingRequest(
+   return {
+     startMin: timeToMinutes(startTimeStr),
+     endMin: parseInt(endTimeStr, 10),
+-    currentTime: Number(currentTimeStr),
++    currentTime: currentTimeStr.trim() === '' ? NaN : Number(currentTimeStr),
+   };
+ }

@@ -1,0 +1,85 @@
+diff --git a/src/App.tsx b/src/App.tsx
+index 56db74c..2d73471 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -5,7 +5,7 @@ import { ROOM_CATALOG, DEFAULT_CURRENT_TIME } from './data/rooms';
+ import { MAX_BOOKING_MINUTES } from './domain/bookingRules';
+ import { checkAvailability } from './domain/availability';
+ import { filterRooms, resolveSelectedRoom } from './domain/roomFilters';
+-import { timeToMinutes } from './utils/time';
++import { parseBookingRequest } from './domain/bookingRequest';
+ import RoomFilters from './components/RoomFilters';
+ import RoomList from './components/RoomList';
+ import BookingForm from './components/BookingForm';
+@@ -19,7 +19,7 @@ function App() {
+   const [roomId, setRoomId] = useState(ROOM_CATALOG[0].id);
+   const [startTimeStr, setStartTimeStr] = useState('09:30');
+   const [endTimeStr, setEndTimeStr] = useState('630');
+-  const [currentTime, setCurrentTime] = useState(DEFAULT_CURRENT_TIME);
++  const [currentTimeStr, setCurrentTimeStr] = useState(String(DEFAULT_CURRENT_TIME));
+   const [checkedKey, setCheckedKey] = useState<string | null>(null);
+ 
+   const matchingRooms = useMemo(
+@@ -28,9 +28,8 @@ function App() {
+   );
+   const selectedRoom = resolveSelectedRoom(matchingRooms, roomId);
+ 
+-  const startMin = timeToMinutes(startTimeStr);
+-  const endMin = parseInt(endTimeStr, 10);
+-  const intervalKey = `${startTimeStr}|${endTimeStr}|${currentTime}`;
++  const { startMin, endMin, currentTime } = parseBookingRequest(startTimeStr, endTimeStr, currentTimeStr);
++  const intervalKey = `${startTimeStr}|${endTimeStr}|${currentTimeStr}`;
+   const hasChecked = checkedKey === intervalKey;
+ 
+   const result = useMemo(
+@@ -74,12 +73,13 @@ function App() {
+           <BookingForm
+             startTimeStr={startTimeStr}
+             endTimeStr={endTimeStr}
++            currentTimeStr={currentTimeStr}
+             currentTime={currentTime}
+             startMin={startMin}
+             endMin={endMin}
+             onStartChange={setStartTimeStr}
+             onEndChange={setEndTimeStr}
+-            onCurrentTimeChange={setCurrentTime}
++            onCurrentTimeChange={setCurrentTimeStr}
+           />
+ 
+           <div className="flex items-center gap-2 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-500">
+diff --git a/src/components/BookingForm.tsx b/src/components/BookingForm.tsx
+index d15f91a..38a9082 100644
+--- a/src/components/BookingForm.tsx
++++ b/src/components/BookingForm.tsx
+@@ -6,17 +6,19 @@ import { INPUT_CLASS } from './inputStyles';
+ interface BookingFormProps {
+   startTimeStr: string;
+   endTimeStr: string;
++  currentTimeStr: string;
+   currentTime: number;
+   startMin: number;
+   endMin: number;
+   onStartChange: (value: string) => void;
+   onEndChange: (value: string) => void;
+-  onCurrentTimeChange: (value: number) => void;
++  onCurrentTimeChange: (value: string) => void;
+ }
+ 
+ export default function BookingForm({
+   startTimeStr,
+   endTimeStr,
++  currentTimeStr,
+   currentTime,
+   startMin,
+   endMin,
+@@ -68,8 +70,8 @@ export default function BookingForm({
+             type="number"
+             min={0}
+             max={MINUTE_IN_DAY}
+-            value={currentTime}
+-            onChange={(e) => onCurrentTimeChange(Number(e.target.value))}
++            value={currentTimeStr}
++            onChange={(e) => onCurrentTimeChange(e.target.value)}
+             className={`${INPUT_CLASS} w-32 pl-3`}
+           />
+           <span className="text-sm text-slate-500">= {minutesToLabel(currentTime)}</span>

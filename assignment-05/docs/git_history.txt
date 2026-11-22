@@ -1,0 +1,69 @@
+95a8fc5 2026-11-22 17:55 A5: README links the GitHub copy
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+a2af393 2026-11-22 17:11 A5: evidence folder (command outputs, diffs, Bolt prompts and answers)
+
+ evidence/a5/01_baseline_local.txt           |  54 ++++
+ evidence/a5/02_audit_full.txt               |  76 ++++++
+ evidence/a5/02_audit_prod.txt               |   1 +
+ evidence/a5/03_probe_baseline.txt           |   7 +
+ evidence/a5/04_ui_before.txt                |  18 ++
+ evidence/a5/05_ui_after_refactor.txt        |  18 ++
+ evidence/a5/06_tests_after_refactor.txt     |  14 +
+ evidence/a5/07_m1_tests_before_fix.txt      | 396 ++++++++++++++++++++++++++++
+ evidence/a5/08_m1_tests_after_fix.txt       |  14 +
+ evidence/a5/09_m2_bolt_name_check.txt       |   1 +
+ evidence/a5/10_m2_tests_before_fix.txt      |  37 +++
+ evidence/a5/11_m2_uninstall.txt             |  16 ++
+ evidence/a5/12_m2_after.txt                 |  53 ++++
+ evidence/a5/13_ui_after_mitigations.txt     |  18 ++
+ evidence/a5/14_ui_live_final.txt            |  18 ++
+ evidence/a5/15_final_local.txt              | 124 +++++++++
+ evidence/a5/16_git_log.txt                  |   6 +
+ evidence/a5/20_ai_bolt_pattern_decision.txt |  15 ++
+ evidence/a5/21_ai_bolt_risk_review.txt      |  29 ++
+ evidence/a5/22_ai_bolt_mitigation_diffs.txt |  73 +++++
+ evidence/a5/local_file_hashes.txt           |  26 ++
+ evidence/a5/m1.diff                         |  92 +++++++
+ evidence/a5/m2.diff                         | 175 ++++++++++++
+ evidence/a5/package_before.json             |  40 +++
+ evidence/a5/refactor_ui.diff                |  85 ++++++
+ 25 files changed, 1406 insertions(+)
+bef97e2 2026-11-22 17:04 A5: README for Assignment #05 (commands, ACs, structure, links)
+
+ README.md | 68 +++++++++++++++++++++++++++++++++++----------------------------
+ 1 file changed, 38 insertions(+), 30 deletions(-)
+ef27ee1 2026-11-22 16:58 A5 Task 07 M2: remove unused @supabase/supabase-js (npm uninstall), REG-DEP guard test
+
+ package-lock.json             | 108 ------------------------------------------
+ package.json                  |   1 -
+ src/domain/regression.test.ts |   8 ++++
+ 3 files changed, 8 insertions(+), 109 deletions(-)
+763281e 2026-11-22 16:57 A5 Task 07 M1: empty or out-of-range current time is rejected (AC-A), REG-CT, PARSE-4, UI-5
+
+ src/App.test.tsx                  | 10 ++++++++++
+ src/domain/availability.test.ts   |  9 +++++++++
+ src/domain/availability.ts        |  3 +++
+ src/domain/bookingRequest.test.ts | 11 +++++++++--
+ src/domain/bookingRequest.ts      |  2 +-
+ 5 files changed, 32 insertions(+), 3 deletions(-)
+8945528 2026-11-22 16:57 A5: AGENTS.md lists bookingRequest.ts (Bolt review R8)
+
+ AGENTS.md | 1 +
+ 1 file changed, 1 insertion(+)
+2acb566 2026-11-22 16:47 A5 Task 03: one pure parseBookingRequest function for form values, characterization tests
+
+ src/App.tsx                       | 12 +++++------
+ src/components/BookingForm.tsx    |  8 ++++---
+ src/domain/bookingRequest.test.ts | 44 +++++++++++++++++++++++++++++++++++++++
+ src/domain/bookingRequest.ts      | 19 +++++++++++++++++
+ 4 files changed, 74 insertions(+), 9 deletions(-)
+3fbed03 2026-11-22 16:43 A5 Task 02: AGENTS.md with purpose, architecture, ACs, safe and forbidden actions, review gates
+
+ AGENTS.md | 102 ++++++++++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 59 insertions(+), 43 deletions(-)
+021a39b 2026-11-08 19:55 A4: refresh git log evidence
+
+ evidence/09_git_log.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)

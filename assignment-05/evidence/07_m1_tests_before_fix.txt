@@ -1,0 +1,396 @@
+
+ RUN  v2.1.9 /project
+
+ ❯ src/domain/availability.test.ts (22 tests | 1 failed) 15ms
+   × checkAvailability — acceptance criteria AC1–AC6 > REG-CT: rejects non-finite or out-of-range current time (AC-A) 7ms
+     → now=NaN should be unavailable: expected true to be false // Object.is equality
+ ✓ src/domain/regression.test.ts (12 tests) 9ms
+ ✓ src/domain/roomFilters.test.ts (19 tests) 7ms
+ ❯ src/App.test.tsx (5 tests | 1 failed) 616ms
+   × App UI behaviour (integration) > UI-5: an empty Current Time field never makes a past slot available (AC-A) 100ms
+     → Unable to find an element with the text: Unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen bg-gradient-to-b from-slate-100 to-slate-200"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto max-w-3xl px-4 py-6 sm:py-10"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"mb-6 flex items-center gap-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-11 w-11 items-center justify-center rounded-xl bg-slate-800 text-white shadow-sm"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-building2"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"22"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"22"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 6h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 10h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 14h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 18h4"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-xl font-bold text-slate-900 sm:text-2xl"[39m
+            [36m>[39m
+              [0mSmart Campus Room Availability[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-sm text-slate-500"[39m
+            [36m>[39m
+              [0mFind a room that fits your group, then check your time slot.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"space-y-5 rounded-2xl bg-white p-5 shadow-lg sm:p-7"[39m
+        [36m>[39m
+          [36m<fieldset[39m
+            [33mclass[39m=[32m"rounded-xl border border-slate-200 bg-slate-50/60 p-4"[39m
+          [36m>[39m
+            [36m<legend[39m
+              [33mclass[39m=[32m"px-1 text-sm font-semibold text-slate-700"[39m
+            [36m>[39m
+              [0mRoom Requirements[0m
+            [36m</legend>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"grid gap-4 sm:grid-cols-[10rem_1fr]"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"mb-1.5 block text-xs font-semibold text-slate-600"[39m
+                  [33mfor[39m=[32m"attendees"[39m
+                [36m>[39m
+                  [0mAttendees[0m
+                [36m</label>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-users absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"16"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"16"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M22 21v-2a4 4 0 0 0-3-3.87"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 3.13a4 4 0 0 1 0 7.75"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<input[39m
+                    [33mclass[39m=[32m"rounded-lg border border-slate-300 py-2.5 pr-3 text-sm text-slate-800 outline-none transition focus:border-slate-800 focus:ring-1 focus:ring-slate-800 w-full bg-white pl-9"[39m
+                    [33mid[39m=[32m"attendees"[39m
+                    [33mmin[39m=[32m"1"[39m
+                    [33mtype[39m=[32m"number"[39m
+                    [33mvalue[39m=[32m"10"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"mb-1.5 block text-xs font-semibold text-slate-600"[39m
+                [36m>[39m
+                  [0mRequired equipment (all selected)[0m
+                [36m</span>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex flex-wrap gap-2"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition border-slate-300 bg-white text-slate-600 hover:border-slate-400"[39m
+                  [36m>[39m
+                    [36m<input[39m
+                      [33mclass[39m=[32m"sr-only"[39m
+                      [33mtype[39m=[32m"checkbox"[39m
+                    [36m/>[39m
+                    [0mProjector[0m
+                  [36m</label>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition border-slate-300 bg-white text-slate-600 hover:border-slate-400"[39m
+                  [36m>[39m
+                    [36m<input[39m
+                      [33mclass[39m=[32m"sr-only"[39m
+                      [33mtype[39m=[32m"checkbox"[39m
+                    [36m/>...
+ ❯ src/domain/bookingRequest.test.ts (11 tests | 2 failed) 12ms
+   × parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-2: keeps each original parser for edge inputs 6ms
+     → expected +0 to be NaN
+   × parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-4: empty current time becomes NaN, not 0 (AC-A fix; the old inline parsing gave 0) 1ms
+     → expected +0 to be NaN
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/App.test.tsx > App UI behaviour (integration) > UI-5: an empty Current Time field never makes a past slot available (AC-A)
+TestingLibraryElementError: Unable to find an element with the text: Unavailable. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"min-h-screen bg-gradient-to-b from-slate-100 to-slate-200"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"mx-auto max-w-3xl px-4 py-6 sm:py-10"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"mb-6 flex items-center gap-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"flex h-11 w-11 items-center justify-center rounded-xl bg-slate-800 text-white shadow-sm"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"lucide lucide-building2"[39m
+              [33mfill[39m=[32m"none"[39m
+              [33mheight[39m=[32m"22"[39m
+              [33mstroke[39m=[32m"currentColor"[39m
+              [33mstroke-linecap[39m=[32m"round"[39m
+              [33mstroke-linejoin[39m=[32m"round"[39m
+              [33mstroke-width[39m=[32m"2"[39m
+              [33mviewBox[39m=[32m"0 0 24 24"[39m
+              [33mwidth[39m=[32m"22"[39m
+              [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 6h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 10h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 14h4"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M10 18h4"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m"text-xl font-bold text-slate-900 sm:text-2xl"[39m
+            [36m>[39m
+              [0mSmart Campus Room Availability[0m
+            [36m</h1>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"text-sm text-slate-500"[39m
+            [36m>[39m
+              [0mFind a room that fits your group, then check your time slot.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"space-y-5 rounded-2xl bg-white p-5 shadow-lg sm:p-7"[39m
+        [36m>[39m
+          [36m<fieldset[39m
+            [33mclass[39m=[32m"rounded-xl border border-slate-200 bg-slate-50/60 p-4"[39m
+          [36m>[39m
+            [36m<legend[39m
+              [33mclass[39m=[32m"px-1 text-sm font-semibold text-slate-700"[39m
+            [36m>[39m
+              [0mRoom Requirements[0m
+            [36m</legend>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"grid gap-4 sm:grid-cols-[10rem_1fr]"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"mb-1.5 block text-xs font-semibold text-slate-600"[39m
+                  [33mfor[39m=[32m"attendees"[39m
+                [36m>[39m
+                  [0mAttendees[0m
+                [36m</label>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"relative"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"lucide lucide-users absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mheight[39m=[32m"16"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mstroke-linecap[39m=[32m"round"[39m
+                    [33mstroke-linejoin[39m=[32m"round"[39m
+                    [33mstroke-width[39m=[32m"2"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                    [33mwidth[39m=[32m"16"[39m
+                    [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"[39m
+                    [36m/>[39m
+                    [36m<circle[39m
+                      [33mcx[39m=[32m"9"[39m
+                      [33mcy[39m=[32m"7"[39m
+                      [33mr[39m=[32m"4"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M22 21v-2a4 4 0 0 0-3-3.87"[39m
+                    [36m/>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M16 3.13a4 4 0 0 1 0 7.75"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                  [36m<input[39m
+                    [33mclass[39m=[32m"rounded-lg border border-slate-300 py-2.5 pr-3 text-sm text-slate-800 outline-none transition focus:border-slate-800 focus:ring-1 focus:ring-slate-800 w-full bg-white pl-9"[39m
+                    [33mid[39m=[32m"attendees"[39m
+                    [33mmin[39m=[32m"1"[39m
+                    [33mtype[39m=[32m"number"[39m
+                    [33mvalue[39m=[32m"10"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"mb-1.5 block text-xs font-semibold text-slate-600"[39m
+                [36m>[39m
+                  [0mRequired equipment (all selected)[0m
+                [36m</span>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex flex-wrap gap-2"[39m
+                [36m>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition border-slate-300 bg-white text-slate-600 hover:border-slate-400"[39m
+                  [36m>[39m
+                    [36m<input[39m
+                      [33mclass[39m=[32m"sr-only"[39m
+                      [33mtype[39m=[32m"checkbox"[39m
+                    [36m/>[39m
+                    [0mProjector[0m
+                  [36m</label>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition border-slate-300 bg-white text-slate-600 hover:border-slate-400"[39m
+                  [36m>[39m
+                    [36m<input[39m
+                      [33mclass[39m=[32m"sr-only"[39m
+                      [33mtype[39m=[32m"checkbox"[39m
+                    [36m/>...
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/App.test.tsx:74:19
+     72|     setValue(/Current Time/, '');
+     73|     fireEvent.click(screen.getByRole('button', { name: 'Check Availabi…
+     74|     expect(screen.getByText('Unavailable')).toBeTruthy();
+       |                   ^
+     75|     expect(screen.getByText(/Current time must be between 0 and 1440/)…
+     76|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > REG-CT: rejects non-finite or out-of-range current time (AC-A)
+AssertionError: now=NaN should be unavailable: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ expectUnavailable src/domain/availability.test.ts:11:62
+      9|   label: string,
+     10| ): void {
+     11|   expect(result.available, `${label} should be unavailable`).toBe(fals…
+       |                                                              ^
+     12|   expect(result.reasons.length, `${label} should have at least one rea…
+     13|   for (const reason of result.reasons) {
+ ❯ src/domain/availability.test.ts:239:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-2: keeps each original parser for edge inputs
+AssertionError: expected +0 to be NaN
+
+- Expected
++ Received
+
+- NaN
++ 0
+
+ ❯ src/domain/bookingRequest.test.ts:31:32
+     29|     expect(parsed.startMin).toBeNaN();
+     30|     expect(parsed.endMin).toBe(630);
+     31|     expect(parsed.currentTime).toBeNaN();
+       |                                ^
+     32|   });
+     33| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-4: empty current time becomes NaN, not 0 (AC-A fix; the old inline parsing gave 0)
+AssertionError: expected +0 to be NaN
+
+- Expected
++ Received
+
+- NaN
++ 0
+
+ ❯ src/domain/bookingRequest.test.ts:38:32
+     36|     expect(oldInlineParsing('05:00', '360', '').currentTime).toBe(0);
+     37|     const parsed = parseBookingRequest('05:00', '360', '');
+     38|     expect(parsed.currentTime).toBeNaN();
+       |                                ^
+     39|     expect(checkAvailability(room, parsed.startMin, parsed.endMin, par…
+     40|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+ Test Files  3 failed | 2 passed (5)
+      Tests  4 failed | 65 passed (69)
+   Start at  16:57:20
+   Duration  4.37s (transform 214ms, setup 0ms, collect 561ms, tests 660ms, environment 1.90s, prepare 284ms)
+

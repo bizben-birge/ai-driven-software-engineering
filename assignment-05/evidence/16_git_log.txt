@@ -1,0 +1,6 @@
+bef97e2 2026-11-22 17:04 A5: README for Assignment #05 (commands, ACs, structure, links)
+ef27ee1 2026-11-22 16:58 A5 Task 07 M2: remove unused @supabase/supabase-js (npm uninstall), REG-DEP guard test
+763281e 2026-11-22 16:57 A5 Task 07 M1: empty or out-of-range current time is rejected (AC-A), REG-CT, PARSE-4, UI-5
+8945528 2026-11-22 16:57 A5: AGENTS.md lists bookingRequest.ts (Bolt review R8)
+2acb566 2026-11-22 16:47 A5 Task 03: one pure parseBookingRequest function for form values, characterization tests
+3fbed03 2026-11-22 16:43 A5 Task 02: AGENTS.md with purpose, architecture, ACs, safe and forbidden actions, review gates

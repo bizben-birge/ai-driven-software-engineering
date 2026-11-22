@@ -1,0 +1,18 @@
+desktop A101 11:00-12:00 now=540 -> Available |  | Room A101 is free from 11:00 to 12:00 (60 min). No conflicts detected.
+desktop page width 1280
+desktop 05:00-06:00 now=540 -> Unavailable |  | Room A101 cannot be booked for this time:
+desktop current time cleared (field shows '') -> Unavailable |  | Room A101 cannot be booked for this time:
+desktop current time -1 -> Unavailable |  | Room A101 cannot be booked for this time:
+desktop attendees -5 -> 5 of 5 rooms match
+desktop attendees cleared (field shows '0') -> 5 of 5 rooms match
+desktop start cleared labels: ['NaN min after midnight']
+desktop console errors: []
+mobile A101 11:00-12:00 now=540 -> Available |  | Room A101 is free from 11:00 to 12:00 (60 min). No conflicts detected.
+mobile page width 390
+mobile 05:00-06:00 now=540 -> Unavailable |  | Room A101 cannot be booked for this time:
+mobile current time cleared (field shows '') -> Unavailable |  | Room A101 cannot be booked for this time:
+mobile current time -1 -> Unavailable |  | Room A101 cannot be booked for this time:
+mobile attendees -5 -> 5 of 5 rooms match
+mobile attendees cleared (field shows '0') -> 5 of 5 rooms match
+mobile start cleared labels: ['NaN min after midnight']
+mobile console errors: []

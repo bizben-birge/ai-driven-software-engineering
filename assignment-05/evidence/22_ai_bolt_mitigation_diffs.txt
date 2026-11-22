@@ -1,0 +1,73 @@
+Tool: Bolt.new (free plan), AI agent "Standard", Plan mode (read-only). Date: 22 November 2026.
+Prompt (mine):
+Plan mode, do NOT apply anything. Rules from my AGENTS.md (pasted): minimal diffs; wait for my approval before editing; keep existing reason texts; no unreviewed dependency changes (I am the reviewer). I confirmed two risks myself: (1) your R1, and more: in the running app, clearing Current Time makes it 0 and -1 is accepted, so a 05:00-06:00 request is Available when now is 09:00 (AC-A broken); (2) your R6: @supabase/supabase-js in package.json line 15 is not imported anywhere in src and is not in the built bundle. Propose minimal unified diffs, not applied: M1 in src/domain/bookingRequest.ts and src/domain/availability.ts: an empty current time must not become 0, and a current time that is not a finite number from 0 to 1440 must be rejected with one new clear reason; add focused regression tests. M2: remove the unused package from package.json, give the exact npm command that also updates package-lock.json, and add one automated guard test. No other files. Max 450 words plus the diffs.
+
+----- Bolt answer (copied from the chat) -----
+M1 — Reject invalid current time
+
+src/domain/bookingRequest.ts (empty string must no longer become 0):
+   return {
+     startMin: timeToMinutes(startTimeStr),
+     endMin: parseInt(endTimeStr, 10),
+-    currentTime: Number(currentTimeStr),
++    currentTime: currentTimeStr.trim() === '' ? NaN : Number(currentTimeStr),
+   };
+
+src/domain/availability.ts (one new reason, inserted before the start <= currentTime check so a bad currentTime can no longer fall through to VALID, and so the existing reason never prints NaN):
+   if (start >= end) {
+     return invalid('Start time must be before end time.');
+   }
++  if (!Number.isFinite(currentTime) || currentTime < 0 || currentTime > MINUTE_IN_DAY) {
++    return invalid(`Current time must be between 0 and ${MINUTE_IN_DAY} (00:00–24:00).`);
++  }
+   if (start <= currentTime) {
+     return invalid(`Start time must be after the current time (${currentTime} min).`);
+   }
+   return VALID;
+
+No existing reason text is changed; one reason is added. start/end parsing and every other branch are untouched.
+
+src/domain/bookingRequest.test.ts (behaviour intentionally changes for empty currentTime; update the two affected assertions and add one focused regression):
+ function oldInlineParsing(start: string, end: string, now: string) {
+-  return { startMin: timeToMinutes(start), endMin: parseInt(end, 10), currentTime: Number(now) };
++  return { startMin: timeToMinutes(start), endMin: parseInt(end, 10), currentTime: now.trim() === '' ? NaN : Number(now) };
+ }
+     expect(parsed.startMin).toBeNaN();
+     expect(parsed.endMin).toBe(630);
+-    expect(parsed.currentTime).toBe(0);
++    expect(parsed.currentTime).toBeNaN();
+   });
++  it('PARSE-4: empty current time becomes NaN, not 0 (AC-A fix)', () => {
++    expect(parseBookingRequest('05:00', '360', '').currentTime).toBeNaN();
++  });
+
+src/domain/availability.test.ts (new regression for the three invalid-currentTime shapes; start=300 is after the bad currentTime so only the new check rejects):
++  it('REG-CT: rejects non-finite or out-of-range current time (AC-A)', () => {
++    const room = makeRoom();
++    for (const now of [NaN, -1, 1441]) {
++      const r = checkAvailability(room, 300, 360, now);
++      expectUnavailable(r, `now=${now}`);
++      expect(r.reasons.join(' ')).toContain('Current time must be between');
++    }
++  });
+
+M2 — Remove unused @supabase/Bolt Database-js
+package.json (delete line 15):
+   "dependencies": {
+-    "@supabase/Bolt Database-js": "^2.57.4",
+     "lucide-react": "^0.446.0",
+Exact command (updates both package.json and package-lock.json atomically; run it, then review the diff before committing):
+npm uninstall @supabase/Bolt Database-js
+
+src/domain/regression.test.ts (guard so it cannot silently come back):
++import pkg from '../../package.json';
++  it('REG-DEP: no Bolt Database dependency is present (forbidden backend)', () => {
++    expect(pkg.dependencies).not.toHaveProperty('@supabase/Bolt Database-js');
++  });
+
+What could go wrong
+- npm uninstall also rewrites package-lock.json; review both files in the diff before approving, since you are the dependency reviewer.
+- The PARSE-3 equivalence table includes ['05:00','360','']; updating oldInlineParsing keeps it green, but it no longer proves "identical to the original App code" for the empty case — it proves identical to the new intended behaviour. That is correct for this fix but worth noting.
+- import pkg from '../../package.json' relies on Vite's JSON handling; if a future stricter TS config rejects it, the guard test would need an explicit with { type: 'json' } import attribute.
+
+Summary: two minimal changes — empty/out-of-range current time is now rejected with one new reason (fixing AC-A), and the forbidden unused Bolt Database dependency is removed with a test that keeps it out. No existing reason text changes; no other files touched. Approve and I will apply only these diffs.

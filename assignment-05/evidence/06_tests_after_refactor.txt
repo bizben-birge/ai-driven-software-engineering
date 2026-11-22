@@ -1,0 +1,14 @@
+
+ RUN  v2.1.9 /project
+
+ ✓ src/domain/availability.test.ts (21 tests) 9ms
+ ✓ src/domain/regression.test.ts (12 tests) 7ms
+ ✓ src/domain/roomFilters.test.ts (19 tests) 7ms
+ ✓ src/App.test.tsx (4 tests) 450ms
+ ✓ src/domain/bookingRequest.test.ts (11 tests) 6ms
+
+ Test Files  5 passed (5)
+      Tests  67 passed (67)
+   Start at  16:47:45
+   Duration  3.72s (transform 198ms, setup 0ms, collect 484ms, tests 479ms, environment 1.67s, prepare 265ms)
+

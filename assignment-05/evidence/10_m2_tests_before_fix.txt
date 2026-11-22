@@ -1,0 +1,37 @@
+
+ RUN  v2.1.9 /project
+
+ ✓ src/domain/availability.test.ts (22 tests) 11ms
+ ❯ src/domain/regression.test.ts (13 tests | 1 failed) 14ms
+   × Assignment #05 mitigation 2 — unused database client stays removed > REG-DEP: package.json has no @supabase/supabase-js dependency 6ms
+     → expected { …(4) } to not have property "@supabase/supabase-js"
+ ✓ src/domain/roomFilters.test.ts (19 tests) 13ms
+ ✓ src/App.test.tsx (5 tests) 646ms
+ ✓ src/domain/bookingRequest.test.ts (11 tests) 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/domain/regression.test.ts > Assignment #05 mitigation 2 — unused database client stays removed > REG-DEP: package.json has no @supabase/supabase-js dependency
+AssertionError: expected { …(4) } to not have property "@supabase/supabase-js"
+
+- Expected: 
+undefined
+
++ Received: 
+"^2.57.4"
+
+ ❯ src/domain/regression.test.ts:167:34
+    165| describe('Assignment #05 mitigation 2 — unused database client stays r…
+    166|   it('REG-DEP: package.json has no @supabase/supabase-js dependency', …
+    167|     expect(pkg.dependencies).not.toHaveProperty('@supabase/supabase-js…
+       |                                  ^
+    168|     expect(pkg.devDependencies).not.toHaveProperty('@supabase/supabase…
+    169|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 69 passed (70)
+   Start at  16:58:03
+   Duration  3.83s (transform 188ms, setup 0ms, collect 422ms, tests 690ms, environment 1.65s, prepare 327ms)
+

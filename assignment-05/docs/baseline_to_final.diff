@@ -1,0 +1,613 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 176d93d..49b53b5 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1,49 +1,66 @@
+ # AGENTS.md
+ 
+-## Project
+-Smart Campus room availability checker; a catalog of five fictional rooms.
+-React + TypeScript + Vite single page. The user sets requirements (attendees, equipment), picks a matching room and a time interval, and sees an Available / Unavailable decision with reasons.
+-
+-## Structure
+-- src/data/rooms.ts - room catalog, equipment options, default current time
+-- src/domain/bookingRules.ts - rule constants and durationMinutes
+-- src/domain/availability.ts - booking rules: checkAvailability, validateInterval, checkDuration, overlapsExisting
+-- src/domain/roomFilters.ts - filter rules: hasEnoughCapacity, hasAllEquipment, filterRooms, resolveSelectedRoom
+-- src/components/*.tsx - UI parts; src/App.tsx - state and composition only
+-- src/types.ts - Room, Booking, Equipment, RoomRequirements, ValidationResult, AvailabilityResult
+-- src/utils/time.ts - time conversion and formatting helpers
+-- src/test/fixtures.ts - shared makeRoom() for tests
+-- src/domain/*.test.ts and src/App.test.tsx - Vitest tests (56 tests)
+-
+-## Constraints
+-Preserve AC1–AC6; no backend, login or booking creation.
+-- AC1: reject start >= end and past requests.
+-- AC2: reject durations longer than 120 minutes.
+-- AC3: reject a blocked room.
+-- AC4: reject overlaps; allow bookings touching only at endpoints.
+-- AC5–AC6: do not mutate booking data; retain clear desktop/mobile feedback.
+-- F1: capacity >= attendees. F2: room has all selected equipment. F3: a blocked room is never available.
+-- F4: clear empty state when no room matches. F5: changing the selected room refreshes the result.
+-
+-## Engineering rules
+-Prefer pure functions and minimal changes; use at most 2 justified patterns.
+-Do not mutate booking fixtures; keep responsive UI feedback.
+-Keep filter rules in roomFilters.ts and booking rules in availability.ts; do not mix them.
+-Do not change existing reason texts or the values of rooms A101 and B202.
+-No new runtime dependencies. Test-only dev dependencies (jsdom, Testing Library) are allowed.
+-No Singleton, Factory or class hierarchies without a concrete need.
+-
+-## Commands
+-- npm install
+-- npx vitest run (same as npm run test)
++## Purpose
++Smart Campus Room Availability Checker: a small React + TypeScript + Vite single page with fictional data only.
++The user sets requirements (attendees, equipment), picks one matching room and a time interval, and sees an Available / Unavailable decision with clear reasons.
++There is no backend, login, database, payment or live API.
++
++## Architecture
++- src/data/rooms.ts - room catalog (5 fictional rooms), equipment options, default current time
++- src/domain/bookingRules.ts - rule constants (120, 1440) and durationMinutes
++- src/domain/availability.ts - time rules: validateInterval, checkDuration, overlapsExisting, checkAvailability
++- src/domain/roomFilters.ts - room rules: hasEnoughCapacity, hasAllEquipment, filterRooms, resolveSelectedRoom
++- src/domain/bookingRequest.ts - parseBookingRequest: the one place that turns raw form strings (start, end, current time) into numbers
++- src/utils/time.ts - time parsing and formatting helpers
++- src/components/*.tsx - UI parts only; src/App.tsx - state and composition only
++- src/types.ts - shared types; src/test/fixtures.ts - shared makeRoom() for tests
++- Tests: src/domain/*.test.ts (unit) and src/App.test.tsx (UI behaviour in jsdom)
++
++## Acceptance criteria (must stay true after every change)
++- AC-A: invalid or past requests are rejected; start must be before end and after the current time.
++- AC-B: bookings longer than 120 minutes and overlapping bookings are rejected; touching endpoints are allowed.
++- AC-C: a blocked room is never reported as available.
++- AC-D: only rooms with capacity >= attendees and all selected equipment are listed; a clear empty state appears when none match.
++- AC-E: checks never change booking data; changing the room refreshes the result; feedback is clear on desktop and mobile.
++
++## Setup
++- Node.js 18 or newer, npm
++- npm ci (or npm install when the lockfile must change; this needs approval)
++
++## Safe commands
++- npm run test (vitest run)
+ - npm run typecheck
++- npm run lint
+ - npm run build
++- npm run dev / npm run preview (local only)
++- npm audit (read-only report)
++- git status, git diff, git log (read-only)
++
++## Coding conventions
++- TypeScript strict mode; pure functions for rules; no comments needed for obvious code.
++- Keep time rules in availability.ts and room rules in roomFilters.ts; do not mix them.
++- Use relative imports (./ and ../), not the @/ alias.
++- Do not change existing reason texts or the values of rooms A101 and B202.
++- Use a design pattern only for a concrete maintainability problem; no Singleton, Factory or class hierarchies.
++
++## Test expectations
++- Every change keeps all existing tests green; do not weaken or delete assertions.
++- A bug fix comes with a focused regression test that fails before the fix and passes after it.
++- Before proposing acceptance run: npm run test, npm run typecheck, npm run lint, npm run build. Report the real output.
++
++## Forbidden actions
++- No secrets: no API keys, tokens, passwords or .env files; no real personal data.
++- No production deployment: the agent must not publish, deploy, change hosting or domains, or add CI/CD secrets. Only the student publishes with Bolt Publish after review.
++- No destructive commands: no rm -rf, no git reset --hard, no force push, no deleting tests or history.
++- No unreviewed dependency changes: do not add, remove or upgrade packages, or edit package.json / package-lock.json, without the student's approval.
++- No backend, database, login, payments, live APIs, new pages or saved bookings. @supabase/supabase-js is unused; do not import it.
+ 
+-## Verification
+-Run existing tests and add focused regression tests.
+-Do not weaken or delete existing assertions.
+-Report changed files, rationale and test evidence.
++## Review gates
++1. Read-only review first (Bolt Plan mode); cite files, functions and lines.
++2. Propose a minimal diff and wait for the student's approval before editing files.
++3. One change at a time; the student reads the diff and runs the safe commands.
++4. Do not claim that a command or test ran unless its real output is shown.
++5. Only the student merges and publishes.
+ 
+-## Forbidden scope changes
+-No backend, database, login, payments, live APIs, saved bookings, new pages or new runtime libraries.
+-Do not rewrite files that are not needed for the selected refactoring.
++## Note for Bolt
++Bolt does not load this file automatically. The student pastes the relevant sections into each prompt.
+diff --git a/README.md b/README.md
+index 2ee6592..523c69e 100644
+--- a/README.md
++++ b/README.md
+@@ -1,19 +1,19 @@
+-# Smart Campus Room Availability Checker (Assignment #04)
++# Smart Campus Room Availability Checker (Assignment #05)
+ 
+ Student: Sulubekov Dias, ID 24B032038
+-Live demo: https://smart-campus-assignm-vqxs.bolt.host
+-Bolt project: https://bolt.new/p/72760729
++Live demo: https://smart-campus-assignm-m840.bolt.host
++Bolt project: https://bolt.new/p/73126703
+ 
+ A small React + TypeScript + Vite app with fictional data only. The user enters room requirements (attendees and equipment), picks one of the matching rooms and checks a time slot. There is no login, payment, live API or database.
+ 
+ ## Requirements
+ 
+-- Node.js 18 or newer, npm
++- Node.js 18 or newer (checked with Node 22), npm
+ 
+ ## Setup and run
+ 
+ ```
+-npm install
++npm ci
+ npm run dev
+ ```
+ 
+@@ -22,43 +22,51 @@ Open the address that Vite prints (usually http://localhost:5173).
+ ## Test and check commands
+ 
+ ```
+-npm test              # vitest run, all automated tests
++npm run test          # vitest run, all automated tests (70)
+ npm run typecheck     # tsc --noEmit -p tsconfig.app.json
++npm run lint          # eslint .
+ npm run build         # production build into dist/
+-npm run preview       # serve the production build
++npm run preview       # serve the production build locally
++npm audit --omit=dev  # dependency advisories for runtime packages
+ ```
+ 
++There is no format script and no CI pipeline yet (see the report, risk register).
++
++## Acceptance criteria
++
++- AC-A: invalid or past requests are rejected; start must be before end and after the current time.
++- AC-B: bookings longer than 120 minutes and overlapping bookings are rejected; touching endpoints are allowed.
++- AC-C: a blocked room is never reported as available.
++- AC-D: only rooms with capacity >= attendees and all selected equipment are listed; a clear empty state appears when none match.
++- AC-E: checks never change booking data; changing the room refreshes the result; feedback is clear on desktop and mobile.
++
+ ## Project structure
+ 
+ ```
+ src/
+-  types.ts                     Room, Booking, Equipment, RoomRequirements, results
+-  data/rooms.ts                ROOM_CATALOG (5 fictional rooms), EQUIPMENT_OPTIONS, DEFAULT_CURRENT_TIME
+-  domain/bookingRules.ts       MAX_BOOKING_MINUTES, MINUTE_IN_DAY, durationMinutes()
+-  domain/availability.ts       validateInterval, checkDuration, overlapsExisting, checkAvailability (AC1-AC5)
+-  domain/roomFilters.ts        hasEnoughCapacity, hasAllEquipment, filterRooms, resolveSelectedRoom (F1-F5)
+-  utils/time.ts                minutesToLabel, timeToMinutes, formatInterval
+-  components/RoomFilters.tsx   attendees input and equipment chips
+-  components/RoomList.tsx      matching rooms and the empty state (F4)
+-  components/BookingForm.tsx   start, end and current time inputs
+-  components/AvailabilityPanel.tsx  Available / Unavailable result with reasons (AC6)
+-  components/Timeline.tsx      daily timeline of the selected room
+-  components/BookingList.tsx   existing bookings of the selected room
+-  App.tsx                      state and composition only
+-  test/fixtures.ts             shared test room builder
++  types.ts                          shared types
++  data/rooms.ts                     ROOM_CATALOG (5 fictional rooms), EQUIPMENT_OPTIONS, DEFAULT_CURRENT_TIME
++  domain/bookingRules.ts            MAX_BOOKING_MINUTES, MINUTE_IN_DAY, durationMinutes()
++  domain/availability.ts            validateInterval, checkDuration, overlapsExisting, checkAvailability
++  domain/roomFilters.ts             hasEnoughCapacity, hasAllEquipment, filterRooms, resolveSelectedRoom
++  domain/bookingRequest.ts          parseBookingRequest: raw form strings -> minutes
++  utils/time.ts                     minutesToLabel, timeToMinutes, formatInterval
++  components/*.tsx                  UI parts (filters, room list, form, result, timeline, bookings)
++  App.tsx                           state and composition only
++  test/fixtures.ts                  shared makeRoom() for tests
+ tests:
+-  src/domain/availability.test.ts   21 tests, AC1-AC6 (from Practice #08-#10)
+-  src/domain/regression.test.ts     12 tests, regression guards (REG-A1, REG-B1..B3, REG-C1..C8)
+-  src/domain/roomFilters.test.ts    19 tests, F1-F5, data checks and boundaries
+-  src/App.test.tsx                  4 UI integration tests (jsdom + Testing Library)
++  src/domain/availability.test.ts   22 tests (AC-A, AC-B, AC-C, AC-E)
++  src/domain/regression.test.ts     13 tests (regression guards, REG-DEP)
++  src/domain/roomFilters.test.ts    19 tests (AC-D, room switching, boundaries)
++  src/domain/bookingRequest.test.ts 11 tests (parsing, refactoring equivalence)
++  src/App.test.tsx                  5 UI tests (jsdom + Testing Library)
+ ```
+ 
+-## Rules
++## Agent instructions
+ 
+-- AC1 start must be before end and after the current time; AC2 at most 120 minutes; AC3 a blocked room is never available; AC4 overlaps are rejected, touching endpoints are allowed; AC5 booking data is never changed; AC6 clear feedback on desktop and mobile.
+-- F1 capacity >= attendees; F2 the room has all selected equipment; F3 a blocked room is never reported as available; F4 empty state when nothing matches; F5 changing the room refreshes the result.
++See AGENTS.md (purpose, architecture, safe commands, forbidden actions, review gates). Bolt does not load it automatically, so the relevant rules are pasted into each prompt.
+ 
+ ## Versions
+ 
+-- Initial version: commit 1b5b5cc (Practice #10 final, 33 tests)
+-- Final version: last commit of the Assignment #04 steps (see evidence/09_git_log.txt); history.bundle in the final ZIP has the full git history
++- Baseline: commit 021a39b (end of Assignment #04, 56 tests)
++- Final: last commit of the Assignment #05 branch a5 (history.bundle in the final source export)
+diff --git a/package-lock.json b/package-lock.json
+index 2baa160..8ff2516 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -8,7 +8,6 @@
+       "name": "vite-react-typescript-starter",
+       "version": "0.0.0",
+       "dependencies": {
+-        "@supabase/supabase-js": "^2.57.4",
+         "lucide-react": "^0.446.0",
+         "react": "^18.3.1",
+         "react-dom": "^18.3.1"
+@@ -1551,98 +1550,6 @@
+         "win32"
+       ]
+     },
+-    "node_modules/@supabase/auth-js": {
+-      "version": "2.118.0",
+-      "resolved": "https://registry.npmjs.org/@supabase/auth-js/-/auth-js-2.118.0.tgz",
+-      "integrity": "sha512-xWfPXyhS2KDSfAneMtI6p/tBnbdiz/5vaRKXEqUfzfC9WCniKr2Ds5o5G7RIGig0bom4z6wUY9zaV07WDVTfnQ==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "tslib": "2.8.1"
+-      },
+-      "engines": {
+-        "node": ">=22.0.0"
+-      }
+-    },
+-    "node_modules/@supabase/functions-js": {
+-      "version": "2.118.0",
+-      "resolved": "https://registry.npmjs.org/@supabase/functions-js/-/functions-js-2.118.0.tgz",
+-      "integrity": "sha512-4ofletPa/noKAU6KHeqsd3FztGzRPUEJRey1MKY0o+PIHaVePqRPShIXtl37gcVyIWaFM+zNg6r9zh0uUSFOSA==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "tslib": "2.8.1"
+-      },
+-      "engines": {
+-        "node": ">=22.0.0"
+-      }
+-    },
+-    "node_modules/@supabase/phoenix": {
+-      "version": "0.4.5",
+-      "resolved": "https://registry.npmjs.org/@supabase/phoenix/-/phoenix-0.4.5.tgz",
+-      "integrity": "sha512-aAn9H9ovVyeApKy11OWOrrOGq8DV68yWeH4ud2lN9fzn4aO8Zb5GLL9m1pUg9nLqIcT+ZDfAcsZe0E/nqdv2lw==",
+-      "license": "MIT"
+-    },
+-    "node_modules/@supabase/postgrest-js": {
+-      "version": "2.118.0",
+-      "resolved": "https://registry.npmjs.org/@supabase/postgrest-js/-/postgrest-js-2.118.0.tgz",
+-      "integrity": "sha512-JXy+37KPApHsyotaQACovv/Jy9E22rfiWLRuT+2UjoEAcAIelDFIrsF/FY47Dy19mO7lI0Tq+zDCX8oJ2Ozfiw==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "tslib": "2.8.1"
+-      },
+-      "engines": {
+-        "node": ">=22.0.0"
+-      }
+-    },
+-    "node_modules/@supabase/realtime-js": {
+-      "version": "2.118.0",
+-      "resolved": "https://registry.npmjs.org/@supabase/realtime-js/-/realtime-js-2.118.0.tgz",
+-      "integrity": "sha512-pzCIEWjqD5/xqEZQerpt+q9rsgYkcrkgCJgf0W2ULqC4fYUeB/p9CFa3t9vn+IVh6dMN9r4ZCE262lZvUC+Bfw==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "@supabase/phoenix": "0.4.5",
+-        "tslib": "2.8.1"
+-      },
+-      "engines": {
+-        "node": ">=22.0.0"
+-      }
+-    },
+-    "node_modules/@supabase/storage-js": {
+-      "version": "2.118.0",
+-      "resolved": "https://registry.npmjs.org/@supabase/storage-js/-/storage-js-2.118.0.tgz",
+-      "integrity": "sha512-5MNkKt2Moy7Jud/sPX7/28BwdDxZMCVHGJT00b8op3KRa9LKSjOAYU5IcfGWIstaasAqY8GkbA6oI3IRDgB1YQ==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "iceberg-js": "^0.8.1",
+-        "tslib": "2.8.1"
+-      },
+-      "engines": {
+-        "node": ">=22.0.0"
+-      }
+-    },
+-    "node_modules/@supabase/supabase-js": {
+-      "version": "2.118.0",
+-      "resolved": "https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-2.118.0.tgz",
+-      "integrity": "sha512-FxI8UXMVC2UG7IkeiI8fuQZqq2oI3JeSuN8MPIC2RLVaoEAxKS0nqE6kii9Ewpq8f9gNPM6git1Y8f0vN/QLFw==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "@supabase/auth-js": "2.118.0",
+-        "@supabase/functions-js": "2.118.0",
+-        "@supabase/postgrest-js": "2.118.0",
+-        "@supabase/realtime-js": "2.118.0",
+-        "@supabase/storage-js": "2.118.0"
+-      },
+-      "engines": {
+-        "node": ">=22.0.0"
+-      },
+-      "peerDependencies": {
+-        "@opentelemetry/api": ">=1.0.0"
+-      },
+-      "peerDependenciesMeta": {
+-        "@opentelemetry/api": {
+-          "optional": true
+-        }
+-      }
+-    },
+     "node_modules/@testing-library/dom": {
+       "version": "10.4.0",
+       "resolved": "https://registry.npmjs.org/@testing-library/dom/-/dom-10.4.0.tgz",
+@@ -3550,15 +3457,6 @@
+         "node": ">= 14"
+       }
+     },
+-    "node_modules/iceberg-js": {
+-      "version": "0.8.1",
+-      "resolved": "https://registry.npmjs.org/iceberg-js/-/iceberg-js-0.8.1.tgz",
+-      "integrity": "sha512-1dhVQZXhcHje7798IVM+xoo/1ZdVfzOMIc8/rgVSijRK38EDqOJoGula9N/8ZI5RD8QTxNQtK/Gozpr+qUqRRA==",
+-      "license": "MIT",
+-      "engines": {
+-        "node": ">=20.0.0"
+-      }
+-    },
+     "node_modules/iconv-lite": {
+       "version": "0.6.3",
+       "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz",
+@@ -5064,12 +4962,6 @@
+       "dev": true,
+       "license": "Apache-2.0"
+     },
+-    "node_modules/tslib": {
+-      "version": "2.8.1",
+-      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
+-      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
+-      "license": "0BSD"
+-    },
+     "node_modules/type-check": {
+       "version": "0.4.0",
+       "resolved": "https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz",
+diff --git a/package.json b/package.json
+index 32adc47..fb4a0a2 100644
+--- a/package.json
++++ b/package.json
+@@ -12,7 +12,6 @@
+     "test": "vitest run"
+   },
+   "dependencies": {
+-    "@supabase/supabase-js": "^2.57.4",
+     "lucide-react": "^0.446.0",
+     "react": "^18.3.1",
+     "react-dom": "^18.3.1"
+diff --git a/src/App.test.tsx b/src/App.test.tsx
+index b03d813..7eb1a9d 100644
+--- a/src/App.test.tsx
++++ b/src/App.test.tsx
+@@ -64,4 +64,14 @@ describe('App UI behaviour (integration)', () => {
+     setValue(/End Time/, '700');
+     expect(screen.queryByText('Unavailable')).toBeNull();
+   });
++
++  it('UI-5: an empty Current Time field never makes a past slot available (AC-A)', () => {
++    render(<App />);
++    setValue(/Start Time/, '05:00');
++    setValue(/End Time/, '360');
++    setValue(/Current Time/, '');
++    fireEvent.click(screen.getByRole('button', { name: 'Check Availability' }));
++    expect(screen.getByText('Unavailable')).toBeTruthy();
++    expect(screen.getByText(/Current time must be between 0 and 1440/)).toBeTruthy();
++  });
+ });
+diff --git a/src/App.tsx b/src/App.tsx
+index 56db74c..2d73471 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -5,7 +5,7 @@ import { ROOM_CATALOG, DEFAULT_CURRENT_TIME } from './data/rooms';
+ import { MAX_BOOKING_MINUTES } from './domain/bookingRules';
+ import { checkAvailability } from './domain/availability';
+ import { filterRooms, resolveSelectedRoom } from './domain/roomFilters';
+-import { timeToMinutes } from './utils/time';
++import { parseBookingRequest } from './domain/bookingRequest';
+ import RoomFilters from './components/RoomFilters';
+ import RoomList from './components/RoomList';
+ import BookingForm from './components/BookingForm';
+@@ -19,7 +19,7 @@ function App() {
+   const [roomId, setRoomId] = useState(ROOM_CATALOG[0].id);
+   const [startTimeStr, setStartTimeStr] = useState('09:30');
+   const [endTimeStr, setEndTimeStr] = useState('630');
+-  const [currentTime, setCurrentTime] = useState(DEFAULT_CURRENT_TIME);
++  const [currentTimeStr, setCurrentTimeStr] = useState(String(DEFAULT_CURRENT_TIME));
+   const [checkedKey, setCheckedKey] = useState<string | null>(null);
+ 
+   const matchingRooms = useMemo(
+@@ -28,9 +28,8 @@ function App() {
+   );
+   const selectedRoom = resolveSelectedRoom(matchingRooms, roomId);
+ 
+-  const startMin = timeToMinutes(startTimeStr);
+-  const endMin = parseInt(endTimeStr, 10);
+-  const intervalKey = `${startTimeStr}|${endTimeStr}|${currentTime}`;
++  const { startMin, endMin, currentTime } = parseBookingRequest(startTimeStr, endTimeStr, currentTimeStr);
++  const intervalKey = `${startTimeStr}|${endTimeStr}|${currentTimeStr}`;
+   const hasChecked = checkedKey === intervalKey;
+ 
+   const result = useMemo(
+@@ -74,12 +73,13 @@ function App() {
+           <BookingForm
+             startTimeStr={startTimeStr}
+             endTimeStr={endTimeStr}
++            currentTimeStr={currentTimeStr}
+             currentTime={currentTime}
+             startMin={startMin}
+             endMin={endMin}
+             onStartChange={setStartTimeStr}
+             onEndChange={setEndTimeStr}
+-            onCurrentTimeChange={setCurrentTime}
++            onCurrentTimeChange={setCurrentTimeStr}
+           />
+ 
+           <div className="flex items-center gap-2 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-500">
+diff --git a/src/components/BookingForm.tsx b/src/components/BookingForm.tsx
+index d15f91a..38a9082 100644
+--- a/src/components/BookingForm.tsx
++++ b/src/components/BookingForm.tsx
+@@ -6,17 +6,19 @@ import { INPUT_CLASS } from './inputStyles';
+ interface BookingFormProps {
+   startTimeStr: string;
+   endTimeStr: string;
++  currentTimeStr: string;
+   currentTime: number;
+   startMin: number;
+   endMin: number;
+   onStartChange: (value: string) => void;
+   onEndChange: (value: string) => void;
+-  onCurrentTimeChange: (value: number) => void;
++  onCurrentTimeChange: (value: string) => void;
+ }
+ 
+ export default function BookingForm({
+   startTimeStr,
+   endTimeStr,
++  currentTimeStr,
+   currentTime,
+   startMin,
+   endMin,
+@@ -68,8 +70,8 @@ export default function BookingForm({
+             type="number"
+             min={0}
+             max={MINUTE_IN_DAY}
+-            value={currentTime}
+-            onChange={(e) => onCurrentTimeChange(Number(e.target.value))}
++            value={currentTimeStr}
++            onChange={(e) => onCurrentTimeChange(e.target.value)}
+             className={`${INPUT_CLASS} w-32 pl-3`}
+           />
+           <span className="text-sm text-slate-500">= {minutesToLabel(currentTime)}</span>
+diff --git a/src/domain/availability.test.ts b/src/domain/availability.test.ts
+index 35b9272..5baa8e1 100644
+--- a/src/domain/availability.test.ts
++++ b/src/domain/availability.test.ts
+@@ -231,4 +231,13 @@ describe('checkAvailability — acceptance criteria AC1–AC6', () => {
+       ).toContain(c.keyword);
+     }
+   });
++
++  it('REG-CT: rejects non-finite or out-of-range current time (AC-A)', () => {
++    const room = makeRoom();
++    for (const now of [NaN, -1, 1441]) {
++      const r = checkAvailability(room, 300, 360, now);
++      expectUnavailable(r, `now=${now}`);
++      expect(r.reasons.join(' ')).toContain('Current time must be between');
++    }
++  });
+ });
+diff --git a/src/domain/availability.ts b/src/domain/availability.ts
+index e6db2a0..0c3401e 100644
+--- a/src/domain/availability.ts
++++ b/src/domain/availability.ts
+@@ -21,6 +21,9 @@ export function validateInterval(
+   if (start >= end) {
+     return invalid('Start time must be before end time.');
+   }
++  if (!Number.isFinite(currentTime) || currentTime < 0 || currentTime > MINUTE_IN_DAY) {
++    return invalid(`Current time must be between 0 and ${MINUTE_IN_DAY} (00:00–24:00).`);
++  }
+   if (start <= currentTime) {
+     return invalid(`Start time must be after the current time (${currentTime} min).`);
+   }
+diff --git a/src/domain/bookingRequest.test.ts b/src/domain/bookingRequest.test.ts
+new file mode 100644
+index 0000000..dbe77a7
+--- /dev/null
++++ b/src/domain/bookingRequest.test.ts
+@@ -0,0 +1,51 @@
++import { describe, it, expect } from 'vitest';
++import { parseBookingRequest } from './bookingRequest';
++import { checkAvailability } from './availability';
++import { timeToMinutes } from '../utils/time';
++import { makeRoom } from '../test/fixtures';
++
++function oldInlineParsing(start: string, end: string, now: string) {
++  return { startMin: timeToMinutes(start), endMin: parseInt(end, 10), currentTime: Number(now) };
++}
++
++const FORM_INPUTS: [string, string, string][] = [
++  ['09:30', '630', '540'],
++  ['11:00', '720', '540'],
++  ['12:00', '841', '540'],
++  ['08:00', '600', '540'],
++  ['05:00', '360', '-1'],
++  ['', '', '540'],
++  ['10:00', '630.75', '540'],
++  ['10:00', '700abc', '540'],
++];
++
++describe('parseBookingRequest (Task 03 refactoring, behaviour must stay identical)', () => {
++  it('PARSE-1: parses normal form values into minutes', () => {
++    expect(parseBookingRequest('09:30', '630', '540')).toEqual({ startMin: 570, endMin: 630, currentTime: 540 });
++  });
++
++  it('PARSE-2: keeps each original parser for edge inputs', () => {
++    const parsed = parseBookingRequest('', '630.75', '');
++    expect(parsed.startMin).toBeNaN();
++    expect(parsed.endMin).toBe(630);
++    expect(parsed.currentTime).toBeNaN();
++  });
++
++  it('PARSE-4: empty current time becomes NaN, not 0 (AC-A fix; the old inline parsing gave 0)', () => {
++    const room = makeRoom();
++    expect(oldInlineParsing('05:00', '360', '').currentTime).toBe(0);
++    const parsed = parseBookingRequest('05:00', '360', '');
++    expect(parsed.currentTime).toBeNaN();
++    expect(checkAvailability(room, parsed.startMin, parsed.endMin, parsed.currentTime).available).toBe(false);
++  });
++
++  it.each(FORM_INPUTS)('PARSE-3: same result as the old inline parsing for %s / %s / %s', (start, end, now) => {
++    const room = makeRoom();
++    const before = oldInlineParsing(start, end, now);
++    const after = parseBookingRequest(start, end, now);
++    expect(after).toEqual(before);
++    expect(checkAvailability(room, after.startMin, after.endMin, after.currentTime)).toEqual(
++      checkAvailability(room, before.startMin, before.endMin, before.currentTime)
++    );
++  });
++});
+diff --git a/src/domain/bookingRequest.ts b/src/domain/bookingRequest.ts
+new file mode 100644
+index 0000000..be35dc2
+--- /dev/null
++++ b/src/domain/bookingRequest.ts
+@@ -0,0 +1,19 @@
++import { timeToMinutes } from '../utils/time';
++
++export interface BookingRequest {
++  startMin: number;
++  endMin: number;
++  currentTime: number;
++}
++
++export function parseBookingRequest(
++  startTimeStr: string,
++  endTimeStr: string,
++  currentTimeStr: string
++): BookingRequest {
++  return {
++    startMin: timeToMinutes(startTimeStr),
++    endMin: parseInt(endTimeStr, 10),
++    currentTime: currentTimeStr.trim() === '' ? NaN : Number(currentTimeStr),
++  };
++}
+diff --git a/src/domain/regression.test.ts b/src/domain/regression.test.ts
+index 2d824ea..ebedaf8 100644
+--- a/src/domain/regression.test.ts
++++ b/src/domain/regression.test.ts
+@@ -3,6 +3,7 @@ import { checkAvailability } from './availability';
+ import { MAX_BOOKING_MINUTES, MINUTE_IN_DAY } from './bookingRules';
+ import { ROOM_CATALOG, DEFAULT_CURRENT_TIME } from '../data/rooms';
+ import { makeRoom as makeBaseRoom, NOW } from '../test/fixtures';
++import pkg from '../../package.json';
+ 
+ function makeRoom() {
+   return makeBaseRoom({
+@@ -160,3 +161,10 @@ describe('Practice #09 regression tests', () => {
+     expect(b202?.bookings).toEqual([]);
+   });
+ });
++
++describe('Assignment #05 mitigation 2 — unused database client stays removed', () => {
++  it('REG-DEP: package.json has no @supabase/supabase-js dependency', () => {
++    expect(pkg.dependencies).not.toHaveProperty('@supabase/supabase-js');
++    expect(pkg.devDependencies).not.toHaveProperty('@supabase/supabase-js');
++  });
++});

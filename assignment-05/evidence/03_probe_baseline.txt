@@ -1,0 +1,7 @@
+now=NaN 300-360: {"available":true,"reasons":[]}
+now=0 (empty field) 300-360: {"available":true,"reasons":[]}
+now=-1 300-360: {"available":true,"reasons":[]}
+attendees -5: 5
+attendees 0: 5
+attendees NaN: 0
+attendees 2.5: 5

@@ -1,0 +1,124 @@
+$ npm run test -- --reporter=verbose
+
+> vite-react-typescript-starter@0.0.0 test
+> vitest run --reporter=verbose
+
+
+ RUN  v2.1.9 /project
+
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T02: rejects when start equals current time
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T03: rejects zero-duration interval
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T04: rejects reversed interval (start > end)
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T05: rejects end beyond 1440
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T16: accepts interval ending exactly at 1440
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T17: accepts start one minute after current time
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > BOUNDARY: rejects negative start (-1)
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > BOUNDARY: rejects NaN inputs
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T06: accepts exactly 120-minute booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T07: rejects 121-minute booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T13: rejects when room is blocked
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T01: accepts touching-endpoint after existing booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T08: accepts touching-endpoint before existing booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T09: rejects partial overlap with existing booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T10: rejects interval that contains existing booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T11: rejects interval inside existing booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T12: rejects interval identical to existing booking
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T14: accepts overlapping-looking interval when no bookings exist
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T15: rejects overlapping interval and leaves bookings unchanged
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > AC5-avail: available decision does not mutate bookings
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > AC6: each rejection type produces a relevant, descriptive reason
+ ✓ src/domain/availability.test.ts > checkAvailability — acceptance criteria AC1–AC6 > REG-CT: rejects non-finite or out-of-range current time (AC-A)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-A1: accepts 660-780 that touches both bookings
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-B1: available check keeps bookings order and values
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-B2: unavailable check keeps bookings order and values
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-B3: never mutates bookings (frozen fixture, all paths)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C1: rejects past start time (AC1, AC6)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C2: rejects reversed interval start > end (AC1, AC6)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C3: rejects 121-minute duration (AC2, AC6)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C4: rejects blocked room even with valid interval (AC3, AC6)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C5: rejects overlapping interval (AC4, AC6)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C6: accepts touching endpoints before and after existing bookings (AC4)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C7: all rejection paths leave bookings unchanged (AC5)
+ ✓ src/domain/regression.test.ts > Practice #09 regression tests > REG-C8: rule constants and original rooms are unchanged (AC1–AC6 baseline)
+ ✓ src/domain/regression.test.ts > Assignment #05 mitigation 2 — unused database client stays removed > REG-DEP: package.json has no @supabase/supabase-js dependency
+ ✓ src/domain/roomFilters.test.ts > Room catalog data > DATA-1: has at least four rooms with unique IDs and all required fields
+ ✓ src/domain/roomFilters.test.ts > Room catalog data > DATA-2: every booking is valid and bookings in one room do not overlap
+ ✓ src/domain/roomFilters.test.ts > F1 capacity filter > F1-1: exact capacity is enough (40 seats, 40 attendees)
+ ✓ src/domain/roomFilters.test.ts > F1 capacity filter > F1-2: insufficient capacity is excluded (40 seats, 41 attendees)
+ ✓ src/domain/roomFilters.test.ts > F1 capacity filter > F1-3: catalog filter keeps only rooms with capacity >= attendees
+ ✓ src/domain/roomFilters.test.ts > F2 equipment filter > F2-1: room with all selected items matches
+ ✓ src/domain/roomFilters.test.ts > F2 equipment filter > F2-2: room missing one selected item does not match
+ ✓ src/domain/roomFilters.test.ts > F2 equipment filter > F2-3: no selected equipment means only capacity is checked
+ ✓ src/domain/roomFilters.test.ts > F2 equipment filter > F2-4: catalog filter with Projector + Video conferencing returns only C310
+ ✓ src/domain/roomFilters.test.ts > F3 blocked rooms > F3-1: a blocked room can match filters but is never reported as available
+ ✓ src/domain/roomFilters.test.ts > F3 blocked rooms > F3-2: no blocked catalog room is available for any free slot
+ ✓ src/domain/roomFilters.test.ts > F4 empty state > F4-1: impossible requirements return an empty list and no selected room
+ ✓ src/domain/roomFilters.test.ts > F5 room selection > F5-1: keeps the chosen room while it still matches
+ ✓ src/domain/roomFilters.test.ts > F5 room selection > F5-2: falls back to the first matching room when the chosen room is filtered out
+ ✓ src/domain/roomFilters.test.ts > F5 room selection > F5-3: the check uses the chosen room bookings, not another room
+ ✓ src/domain/roomFilters.test.ts > Boundaries on catalog rooms > BND-1: exactly 120 minutes is accepted, 121 minutes is rejected
+ ✓ src/domain/roomFilters.test.ts > Boundaries on catalog rooms > BND-2: touching intervals are accepted, overlapping by one minute is rejected
+ ✓ src/domain/roomFilters.test.ts > Boundaries on catalog rooms > BND-3: exact capacity is included, capacity minus one is excluded
+ ✓ src/domain/roomFilters.test.ts > AC5 with filters > AC5-F: filtering and checking never change the catalog
+ ✓ src/App.test.tsx > App UI behaviour (integration) > UI-1: filters show only matching rooms and update the count
+ ✓ src/App.test.tsx > App UI behaviour (integration) > UI-2: impossible requirements show the empty state and disable the check
+ ✓ src/App.test.tsx > App UI behaviour (integration) > UI-3: changing the selected room refreshes the result for that room (F5)
+ ✓ src/App.test.tsx > App UI behaviour (integration) > UI-4: editing the time hides the old result until Check is pressed again
+ ✓ src/App.test.tsx > App UI behaviour (integration) > UI-5: an empty Current Time field never makes a past slot available (AC-A)
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-1: parses normal form values into minutes
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-2: keeps each original parser for edge inputs
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-4: empty current time becomes NaN, not 0 (AC-A fix; the old inline parsing gave 0)
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for 09:30 / 630 / 540
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for 11:00 / 720 / 540
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for 12:00 / 841 / 540
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for 08:00 / 600 / 540
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for 05:00 / 360 / -1
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for  /  / 540
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for 10:00 / 630.75 / 540
+ ✓ src/domain/bookingRequest.test.ts > parseBookingRequest (Task 03 refactoring, behaviour must stay identical) > PARSE-3: same result as the old inline parsing for 10:00 / 700abc / 540
+
+ Test Files  5 passed (5)
+      Tests  70 passed (70)
+   Start at  17:06:51
+   Duration  3.87s (transform 192ms, setup 0ms, collect 410ms, tests 666ms, environment 1.67s, prepare 346ms)
+
+exit=0
+
+$ npm run typecheck
+
+> vite-react-typescript-starter@0.0.0 typecheck
+> tsc --noEmit -p tsconfig.app.json
+
+exit=0
+
+$ npm run lint
+
+> vite-react-typescript-starter@0.0.0 lint
+> eslint .
+
+exit=0
+
+$ npm run build
+
+> vite-react-typescript-starter@0.0.0 build
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 1581 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.71 kB │ gzip:  0.38 kB
+dist/assets/index-Blb4LCG_.css   15.48 kB │ gzip:  3.69 kB
+dist/assets/index-DhsC1UZo.js   161.73 kB │ gzip: 51.24 kB
+✓ built in 2.58s
+exit=0
+
+$ npm run format
+npm error Missing script: "format"
+npm error
+
+$ npm audit --omit=dev
+found 0 vulnerabilities
+$ npm audit (all)
+
