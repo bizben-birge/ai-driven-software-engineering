@@ -1,0 +1,5 @@
+== grep for risky patterns in src (SAST, manual) ==
+no matches
+
+== .env files ==
+no .env file

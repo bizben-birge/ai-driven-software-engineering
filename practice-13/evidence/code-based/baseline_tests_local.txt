@@ -1,0 +1,16 @@
+
+ RUN  v2.1.9 /home/claude/p13/base
+
+ ✓ src/utils/booking.test.ts (21 tests) 6ms
+ ✓ src/utils/regression.test.ts (17 tests) 5ms
+ ✓ src/explanation/explanation.test.ts (46 tests) 1145ms
+ ✓ src/utils/formValues.test.ts (19 tests) 5ms
+ ✓ src/components/ReviewRegression.test.tsx (5 tests) 375ms
+ ✓ src/components/ExplanationPanel.test.tsx (8 tests) 2120ms
+   ✓ F-AC5: real App interactions > shows fallback after a real 1200 ms timeout 1229ms
+
+ Test Files  6 passed (6)
+      Tests  116 passed (116)
+   Start at  16:36:50
+   Duration  5.62s (transform 180ms, setup 0ms, collect 469ms, tests 3.66s, environment 562ms, prepare 206ms)
+

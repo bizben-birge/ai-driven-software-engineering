@@ -1,0 +1,15 @@
+Act as a software engineering assistant. Implement the Smart Campus availability contract in this Bolt.new React + TypeScript + Vite project. Keep all six acceptance criteria unchanged. Use fictional data only. Separate deterministic booking rules from presentation. Explain limitations and provide tests. Do not invent successful test results.
+
+Contract (same for the code-based and the low-code version):
+User story: As a student, I want to check if Room A101 is free for a future start time and a duration, so that I can plan a study session.
+Inputs: start time (HH:MM), duration in minutes, room blocked flag, fixed fictional bookings (A101: 10:00-11:00 Data Structures Lecture). Simulated current time is 09:00.
+Outputs: available (true/false), reason code, visible message.
+AC1: Start time must be in the future.
+AC2: Duration must be greater than zero and at most 120 minutes.
+AC3: Overlapping bookings are unavailable.
+AC4: Blocked room is unavailable.
+AC5: Display a clear decision without changing existing bookings.
+AC6: Invalid input receives understandable feedback.
+Reason codes: AVAILABLE, INVALID_START_TIME, PAST_START_TIME, INVALID_DURATION, DURATION_TOO_LONG, ENDS_AFTER_MIDNIGHT, ROOM_BLOCKED, OVERLAP.
+Tests T1-T8: 11:30/60 Available; 10:30/60 Unavailable overlap; 11:30/60 blocked Unavailable; 11:30/0 validation error; 11:30/121 validation error; 08:00/30 validation error; 11:00/60 Available (touches the booking end); booking data unchanged after all checks.
+The optional explanation feature from Practice #11 is not required. Plan only for now: list the files you would create or change, the order of checks, the tests and the limitations.

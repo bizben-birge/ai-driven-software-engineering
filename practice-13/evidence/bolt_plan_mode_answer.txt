@@ -1,0 +1,69 @@
+Bolt.new, project "Smart Campus Practice 13 - code-based", Plan mode, assistant option "Standard" (model not shown).
+Prompt: evidence/prompt_implementation.txt. Answer copied from the Bolt chat on 26 Nov 2026 (text only, file-read counters removed).
+After this answer Bolt showed "You're out of tokens. Switch to Pro for more usage." so Build mode was not used.
+
+---
+Plan: Smart Campus Availability Contract (start time + duration model)
+
+Current state vs. contract
+The project already has a working availability checker, but it is built around a different input/output model than the
+contract requires: Today the app takes start time (HH:MM) + end time (minutes after midnight) and returns
+{ available, reasons: string[] } (free-text reasons, no reason code).
+The contract requires start time (HH:MM) + duration in minutes as inputs and { available, reasonCode, message } as outputs,
+with a fixed set of eight reason codes: AVAILABLE, INVALID_START_TIME, PAST_START_TIME, INVALID_DURATION, DURATION_TOO_LONG,
+ENDS_AFTER_MIDNIGHT, ROOM_BLOCKED, OVERLAP.
+The existing fictional data (A101 booking 10:00-11:00, simulated current time 09:00) already matches the contract, so
+sampleData.ts needs no change.
+The explanation feature (src/explanation/*, ExplanationPanel) already exists. The contract says it is optional and not
+required, so it can remain as-is.
+
+1. New availability contract module (deterministic rules, no UI)
+Create src/availability/reasonCodes.ts defining the eight reason codes as a typed union and a mapping from each code to a
+human-readable message string.
+Create src/availability/checkAvailability.ts exposing one pure function ... return { available, reasonCode, message }.
+The function performs no I/O, touches no global state, and never mutates the bookings array (satisfies AC5).
+Reuse the existing time-parsing helper (timeToMinutes in src/utils/time.ts) and the overlap helper (overlapsExisting in
+src/utils/validation.ts) so there is a single source of truth for those primitives.
+
+Order of checks (fail-fast, first match wins)
+- Parse the start time string; if it is not valid HH:MM, return INVALID_START_TIME.
+- If the parsed start is not strictly greater than the simulated current time, return PAST_START_TIME (AC1).
+- If the duration is not a finite number greater than zero, return INVALID_DURATION (AC2, lower bound).
+- If the duration is greater than 120 minutes, return DURATION_TOO_LONG (AC2, upper bound).
+- Compute end = start + duration; if end exceeds 1440 (midnight), return ENDS_AFTER_MIDNIGHT.
+- If the room-blocked flag is true, return ROOM_BLOCKED (AC4).
+- If the computed interval overlaps any existing booking, return OVERLAP (AC3). Touching endpoints are allowed.
+- Otherwise return AVAILABLE with available: true.
+
+2. Update the user interface to the contract's input/output model
+Replace the end-time input with a "Duration (minutes)" input, call the new contract function, display the decision with
+the reason code and message (AC5, AC6), keep the block checkbox and simulated time, draw the Timeline candidate from start
+to start + duration, keep the bookings list and timeline as display only.
+
+3. Tests for the contract (T1-T8 plus boundary cases)
+Create src/availability/checkAvailability.test.ts with T1-T8 exactly as in the contract (T8: bookings deep-equal to the
+original snapshot after all checks). Boundary cases: malformed start time ("25:00", "abc") -> INVALID_START_TIME;
+duration 120 -> Available when no overlap; start 23:30, duration 60 -> ENDS_AFTER_MIDNIGHT.
+Each test asserts both the boolean and the exact reason code.
+
+4. Keep deterministic rules separate from presentation (and from the optional explanation feature)
+The new module imports nothing from React. Existing utils stay as shared primitives. The explanation feature stays in place
+but is not required; its reason codes differ from the contract's eight codes (known limitation).
+
+Limitations to document
+- Fixed fictional data, no persistence (a Bolt Database would make tests non-deterministic).
+- Single room, single booking.
+- Simulated current time is fixed at 09:00.
+- Explanation feature reason codes do not match the contract.
+- No actual reservation is ever made; the function is read-only.
+
+One question before I proceed in build mode: do you want me to leave the existing explanation panel in the UI as-is, or
+remove it entirely since the contract says it is not required?
+---
+
+What I kept and what I changed (code-based track):
+- Kept: the check order, the reason codes, pure rules without React, T1-T8 plus boundaries, the limitations.
+- Changed: did not reuse timeToMinutes for input parsing, because the probe showed timeToMinutes("25:00") = 1500,
+  "11:30abc" = 690 and "11:60" = 720 (evidence/review_timeToMinutes_probe.txt). A strict HH:MM parser was written instead.
+- Changed: removed the explanation panel and its code (answer to Bolt's question), so the page shows only the contract.
+- Changed: module name src/contract instead of src/availability (one folder for types, validation, availability, messages).

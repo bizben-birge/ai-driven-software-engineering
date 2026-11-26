@@ -1,0 +1,8 @@
+│ 5 Code Findings │
+   ❯❯❱ home.claude.p13.evidence.dom-inner-html-assignment
+   ❯❯❱ home.claude.p13.evidence.eval-like
+    ❯❱ home.claude.p13.evidence.client-side-secret-in-env
+     ❱ home.claude.p13.evidence.network-call
+          network call from the browser
+   ❯❯❱ home.claude.p13.evidence.react-dangerously-set-inner-html
+ • Findings: 5 (5 blocking)

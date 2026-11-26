@@ -1,0 +1,3 @@
+timeToMinutes("25:00") = 1500
+timeToMinutes("11:30abc") = 690
+timeToMinutes("11:60") = 720

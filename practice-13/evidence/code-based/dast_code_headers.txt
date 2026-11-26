@@ -1,0 +1,16 @@
+Safe manual DAST of my own public Bolt demo (no scanner, no attack traffic, no third-party targets).
+Re-checked 26 Nov 2026 12:18 UTC in the built-in browser (not signed in to Bolt).
+URL: https://smart-campus-practic-lkw3.bolt.host/  (live bundle index-CfsNHm_9.js)
+
+Response 200, server: cloudflare, cache: Netlify Edge, x-powered-by: Bolt.new
+strict-transport-security: max-age=31536000; includeSubDomains; preload   (present)
+content-security-policy: not sent
+x-frame-options: not sent
+x-content-type-options: not sent
+Query string test: /?q=<b>test</b> -> the text is not reflected into the page (no <b>test</b> in the DOM).
+localStorage keys: none. Cookies: none set by the app.
+Scripts: the app bundle and https://bolt.new/badge.js (third-party badge added by the Bolt host, not by my code).
+Inputs: start time (type=time), duration (type=number), blocked (checkbox). Results are rendered as React text, never as HTML
+(unit test "Markup is never rendered as HTML" in App.test.tsx).
+Note: the missing headers are a hosting setting. On the free Bolt host I cannot set custom headers, so this stays an open
+platform finding (see the security checklist in the report).

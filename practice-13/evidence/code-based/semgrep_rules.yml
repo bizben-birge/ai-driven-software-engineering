@@ -1,0 +1,38 @@
+rules:
+  - id: react-dangerously-set-inner-html
+    languages: [typescript]
+    severity: ERROR
+    message: HTML from data is injected without escaping (XSS risk)
+    pattern: <$EL dangerouslySetInnerHTML={...} />
+  - id: dom-inner-html-assignment
+    languages: [typescript]
+    severity: ERROR
+    message: innerHTML / outerHTML assignment (XSS risk)
+    pattern-either:
+      - pattern: $X.innerHTML = $Y
+      - pattern: $X.outerHTML = $Y
+  - id: eval-like
+    languages: [typescript]
+    severity: ERROR
+    message: dynamic code execution
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: new Function(...)
+      - pattern: setTimeout("...", ...)
+  - id: client-side-secret-in-env
+    languages: [typescript]
+    severity: WARNING
+    message: value from import.meta.env is shipped to the browser
+    pattern: import.meta.env.$NAME
+  - id: hardcoded-secret-like-string
+    languages: [typescript]
+    severity: WARNING
+    message: string looks like an API key or token
+    pattern-regex: (sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{30,}|eyJ[A-Za-z0-9_-]{20,}\.)
+  - id: network-call
+    languages: [typescript]
+    severity: INFO
+    message: network call from the browser
+    pattern-either:
+      - pattern: fetch(...)
+      - pattern: new XMLHttpRequest()

@@ -1,0 +1,20 @@
+Low-code UI tests on the deployed public page, built-in browser, not signed in, 800x600 viewport.
+One session, no reload between T1 and T7 (so T8 can use the check counter). Times are UTC from screenshot timestamps.
+
+T1 11:30 / 60 / not blocked -> "Available: the room is free from 11:30-12:30." AVAILABLE           12:11:19  PASS  lc_T1.jpg
+T2 10:30 / 60 / not blocked -> "Unavailable: 10:30-11:30 overlaps the existing booking 10:00-11:00." OVERLAP  PASS  lc_T2.jpg
+T3 11:30 / 60 / blocked     -> "Unavailable: the room is blocked, so it cannot be booked." ROOM_BLOCKED  PASS  lc_T3.jpg
+T4 11:30 / 0                -> "The duration must be a whole number of minutes greater than 0." INVALID_DURATION  PASS  lc_T4.jpg
+T5 11:30 / 121              -> "The duration must be 120 minutes or less." DURATION_TOO_LONG  PASS  lc_T5.jpg
+T6 08:00 / 30               -> "The start time must be in the future (after 09:00)." PAST_START_TIME  PASS  lc_T6.jpg
+T7 11:00 / 60               -> "Available: the room is free from 11:00-12:00." AVAILABLE  12:12:10  PASS  lc_T7_T8.jpg
+T8 after T1-T7: table still shows one booking B1 A101 Data Structures Lecture 10:00-11:00, "Checks run: 7."  PASS  lc_T7_T8.jpg
+Extra: changing the start time after T1 hides the old result (lc_stale_result_hidden.jpg).
+Extra AC6: "<img src=x onerror=alert(1)>" -> INVALID_START_TIME, nothing rendered as HTML (lc_AC6_markup_input.jpg).
+Extra narrow view 375 px (mobile emulation): page width 375 = scrollWidth (no page overflow), T2 works.
+  Observed limits: button label cut to "Check a...", inputs keep a narrow fixed width, the table scrolls sideways.
+
+Defect LC1 (found before these runs, 12:08 UTC): first click after typing showed "No result yet" while "Checks run" went to 1.
+  Cause: the delayed onTextChanged event ran clearDecision after check() and removed the fresh result.
+  Fix: the stored decision keeps an input key; clearDecision clears only when the key differs; the result text shows
+  the decision only when the key matches the current input. Re-deployed, T1 then worked on the first click.

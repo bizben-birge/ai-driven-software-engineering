@@ -1,0 +1,25 @@
+Safe manual DAST of my own public Appsmith page (no scanner, no attack traffic, no third-party targets).
+Date: 26 Nov 2026, about 12:12 UTC. Browser: built-in browser, not signed in (Appsmith reports anonymousUser, isAnonymous=true).
+URL: https://app.appsmith.com/app/smart-campus-practice-13-low-code/page1-6b081c37f6c6480b7e2a987c
+
+Response: 200, served via Amazon CloudFront.
+content-security-policy: present, but wide:
+  default-src 'self' | script-src 'self' 'unsafe-inline' 'unsafe-eval' * | connect-src * ... | img-src * data: blob: |
+  style-src * 'self' 'unsafe-inline' | frame-ancestors 'self' * chrome-extension://* | frame-src * data: blob:
+x-content-type-options: nosniff
+x-xss-protection: 0
+x-frame-options: not sent (frame-ancestors allows *, so any site can embed the page)
+strict-transport-security: not sent in this response
+Cookies visible to page script: XSRF-TOKEN only.
+localStorage: APPSMITH_LOCAL_STORE-<appId> = {} (the app stores decision and checks with persist=false, so nothing is kept)
+Third-party script hosts in the page HTML (platform-controlled, not mine): static.reo.dev, pkg.betterbugs.io,
+  faro-collector-prod-us-west-0.grafana.net, customer.appsmith.com, www.appsmith.com
+
+Public view API check (same anonymous session):
+  GET /api/v1/consolidated-api/view?applicationId=...  -> 200, 61431 bytes
+  The response contains the full JS object source (found "selfTest", "keyOf") and the booking data.
+  Meaning: anything written in a JS object of a public app is readable by any visitor. No secret may be stored there.
+  This app has no secrets, no datasources and no API keys.
+
+Input test (AC6 / XSS): start time "<img src=x onerror=alert(1)>" -> INVALID_START_TIME, no <img src="x"> element created,
+  no alert. The raw input is never copied into the result text (the message is built only from parsed minutes).

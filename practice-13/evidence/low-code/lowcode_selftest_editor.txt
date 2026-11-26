@@ -1,0 +1,4 @@
+Appsmith editor, JS object BookingLogic, function selfTest, Run button (26 Nov 2026).
+Response (observed in the editor Response panel):
+T1:AVAILABLE:true ; T2:OVERLAP:true ; T3:ROOM_BLOCKED:true ; T4:INVALID_DURATION:true ; T5:DURATION_TOO_LONG:true ; T6:PAST_START_TIME:true ; T7:AVAILABLE:true ; T8:bookings unchanged:true
+Note: this is a script-level self check inside the low-code tool. The UI tests T1-T8 were run separately on the deployed page.

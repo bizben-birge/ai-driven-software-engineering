@@ -1,0 +1,47 @@
+Practice 13 time log (local time, Asia/Almaty, 26 Nov 2026). Times come from the shell clock and the Bolt/Appsmith screens.
+
+CODE-BASED (Bolt + React/TypeScript)
+15:39 start: clone repo, local baseline install
+15:39-15:41 local baseline checks (116 tests, typecheck, lint, build)
+15:41 Bolt Duplicate of Practice 12 -> Version 1 (Nov 26 3:41 PM), renamed "Smart Campus Practice 13 - code-based"
+15:42-15:46 baseline checks in the Bolt terminal (116/116, typecheck, lint, build) and baseline screenshots
+15:43-15:44 contract module, new App and tests written locally (first run: 1 failing UI test)
+15:44 fix: checkbox label text changed when blocked badge was inside the label -> 91/91 pass
+15:48 implementation prompt sent to Bolt (Plan mode)
+15:48-15:55 Bolt Plan mode read the project and answered with a plan; after the answer Bolt showed 'You're out of tokens' (monthly free limit was 25K)
+16:03-16:06 code imported into Bolt through the terminal (4 base64 parts), 13 file hashes match local
+16:06-16:08 Bolt: npm uninstall supabase, 93/93 tests, typecheck, lint, build (same bundle hash as local)
+16:08-16:10 Published code-based demo: https://smart-campus-practic-lkw3.bolt.host (Public). Bolt 'Run security audit' is locked on the free plan.
+16:12 manual test T5: decision correct, but the timeline still drew a candidate bar for a rejected input (defect D1, cosmetic)
+16:10-16:15 manual T1-T8 on the public code-based demo in Chrome: 8/8 as expected (T8: 9 checks, list still 1 booking)
+16:16-16:28 security checks (DAST headers, SAST grep + semgrep local rules, npm audit), then fix D1 (candidate bar hidden for validation errors), new UI test fails on old code and passes on fix; fix imported into Bolt, 94/94 in Bolt
+16:30-16:37 republished (Update), live bundle index-CfsNHm_9.js; T1-T8 repeated on the final public demo: 8/8 as expected
+16:37-16:42 mobile check (375 px, no horizontal scroll) and local evidence files
+
+LOW-CODE (Appsmith cloud, free plan, signed in with Google by the student)
+16:37 Appsmith sign-in page opened in Chrome; the student signed in with Google himself (account step, waiting time included)
+16:47 Appsmith onboarding: "Connect a datasource" skipped (no datasource is used)
+16:47-16:51 first "New JS object" click did nothing; editor reload, JS object appeared
+16:51-16:53 JS object BookingLogic pasted (same contract and reason codes), renamed
+16:53-17:03 widgets placed with drag and drop and set in the property pane: TitleText, StartInput, DurationInput (Number),
+            BlockedCheckbox (default off), CheckButton (onClick BookingLogic.check), RoomText, ResultText, BookingsTable, ChecksText
+17:04 editor self check (BookingLogic.selfTest, Run): T1-T8 8/8
+17:04-17:07 app renamed "Smart Campus Practice 13 - low-code", layout tidied, deployed
+17:07 Share -> "Make application public" on
+17:08 checked without login (built-in browser, anonymousUser): page and table load
+17:08 first manual run of T1: defect LC1 (first click shows "No result yet", counter goes to 1)
+17:09-17:11 LC1 fixed (input key on the stored decision, clearDecision only clears on a real change, result text checks the key), redeployed
+17:11-17:12 T1-T8 on the public page without login: 8/8 as expected (T8: "Checks run: 7", list still 1 booking)
+17:12-17:13 extra checks: markup input (AC6), narrow 375 px view, response headers, public view API
+17:15 Export application -> Smart Campus Practice 13 - low-code.json (77 918 bytes), no datasources, no secrets
+
+Summary (minutes, rounded; measured from screenshot and shell timestamps)
+                    code-based    low-code
+setup                 ~7            ~14 (includes sign-in and onboarding)
+implementation        ~25           ~17
+debugging             ~12 (D1)      ~3 (LC1)
+testing               ~11           ~4
+total                 ~63           ~38
+Note: both tracks were operated by an AI assistant (Claude), not typed by hand. The code track started from the Practice 12
+code base (reused time and overlap helpers and 57 old tests); the low-code track started from an empty app but reused the
+contract, messages and test cases from the code track. So the numbers are real for this run but not a fair speed contest.

@@ -31,3 +31,20 @@ To run: open practice-12, run `npm ci`, then `npm run dev`. See the practice REA
 Smart Campus Room Availability Checker with fictional data only (no login, database or live API). Baseline: end of Assignment 04 (56 tests). Final: 70 tests, typecheck, lint and build pass; release decision CONDITIONAL. AI assistant: Bolt.new agent in Plan mode.
 
 To run: open assignment-05, run `npm ci`, then `npm test` or `npm run dev`.
+
+## Practice 13
+- [Individual source files and full README](practice-13/)
+- [README as PDF](practice-13/README.pdf)
+- [Main report PDF](practice-13/docs/Practice_13_Report.pdf)
+- [Editable report](practice-13/docs/Practice_13_Report.docx)
+- [Shared acceptance criteria](practice-13/docs/acceptance_criteria.md) and [eight-case test table](practice-13/docs/test_results.md)
+- [Code-based source](practice-13/code-based/) and [low-code script, widgets and Appsmith export](practice-13/low-code/)
+- [Screenshots](practice-13/screenshots/)
+- [Verification evidence and AI prompts](practice-13/evidence/)
+- [Bolt project](https://bolt.new/~/sb1-n7udkocg)
+- [Public live demo, code-based](https://smart-campus-practic-lkw3.bolt.host)
+- [Public live demo, low-code (Appsmith)](https://app.appsmith.com/app/smart-campus-practice-13-low-code/page1-6b081c37f6c6480b7e2a987c)
+
+Compare code-based and low-code solutions: the same Smart Campus availability contract built in Bolt (React + TypeScript) and in Appsmith. Both pass T1-T8 (8/8); the code-based version also passes 94 automated tests. Fictional data only, no login, database or secrets.
+
+To run the code-based version: open practice-13/code-based, run `npm ci`, then `npm test` or `npm run dev`.

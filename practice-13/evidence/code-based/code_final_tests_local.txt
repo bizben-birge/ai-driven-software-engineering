@@ -1,0 +1,103 @@
+
+ RUN  v2.1.9 /home/claude/p13/code
+
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T02: rejects when start equals current time
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T03: rejects zero-duration interval
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T04: rejects reversed interval (start > end)
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T05: rejects end beyond 1440
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T16: accepts interval ending exactly at 1440
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T17: accepts start one minute after current time
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > BOUNDARY: rejects negative start (-1)
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > BOUNDARY: rejects NaN inputs
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T06: accepts exactly 120-minute booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T07: rejects 121-minute booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T13: rejects when room is blocked
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T01: accepts touching-endpoint after existing booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T08: accepts touching-endpoint before existing booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T09: rejects partial overlap with existing booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T10: rejects interval that contains existing booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T11: rejects interval inside existing booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T12: rejects interval identical to existing booking
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T14: accepts overlapping-looking interval when no bookings exist
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > T15: rejects overlapping interval and leaves bookings unchanged
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > AC5-avail: available decision does not mutate bookings
+ ✓ src/utils/booking.test.ts > checkAvailability — acceptance criteria AC1–AC6 > AC6: each rejection type produces a relevant, descriptive reason
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-A1: accepts 660-780 that touches both bookings
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-B1: available check keeps bookings order and values
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-B2: unavailable check keeps bookings order and values
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-B3: never mutates bookings (frozen fixture, all paths)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C1: rejects past start time (AC1, AC6)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C2: rejects reversed interval start > end (AC1, AC6)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C3: rejects 121-minute duration (AC2, AC6)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C4: rejects blocked room even with valid interval (AC3, AC6)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C5: rejects overlapping interval (AC4, AC6)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C6: accepts touching endpoints before and after existing bookings (AC4)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C7: all rejection paths leave bookings unchanged (AC5)
+ ✓ src/utils/regression.test.ts > Practice #09 regression tests > REG-C8: rule constants and sample fixtures are unchanged (AC1–AC6 baseline)
+ ✓ src/utils/regression.test.ts > Task #08 mitigation 1 — invalid currentTime rejection (AC1, AC6) > REG-D1: rejects NaN currentTime
+ ✓ src/utils/regression.test.ts > Task #08 mitigation 1 — invalid currentTime rejection (AC1, AC6) > REG-D2: rejects negative currentTime (-1)
+ ✓ src/utils/regression.test.ts > Task #08 mitigation 1 — invalid currentTime rejection (AC1, AC6) > REG-D3: rejects currentTime beyond 1440 (1441)
+ ✓ src/utils/regression.test.ts > Task #08 mitigation 1 — invalid currentTime rejection (AC1, AC6) > REG-D4: empty Current Time field value is treated as invalid, not 0
+ ✓ src/utils/regression.test.ts > Task #08 mitigation 1 — invalid currentTime rejection (AC1, AC6) > REG-D5: valid currentTime (540) keeps normal AC1–AC6 behaviour
+ ✓ src/contract/contract.test.ts > Shared contract cases T1-T7 > 'T1' 'valid free interval'
+ ✓ src/contract/contract.test.ts > Shared contract cases T1-T7 > 'T2' 'overlap with an existing booking'
+ ✓ src/contract/contract.test.ts > Shared contract cases T1-T7 > 'T3' 'blocked room'
+ ✓ src/contract/contract.test.ts > Shared contract cases T1-T7 > 'T4' 'duration = 0'
+ ✓ src/contract/contract.test.ts > Shared contract cases T1-T7 > 'T5' 'duration = 121 minutes'
+ ✓ src/contract/contract.test.ts > Shared contract cases T1-T7 > 'T6' 'past start time'
+ ✓ src/contract/contract.test.ts > Shared contract cases T1-T7 > 'T7' 'adjacent non-overlapping interval'
+ ✓ src/contract/contract.test.ts > T8 booking data unchanged > keeps the frozen fixture identical after all shared checks
+ ✓ src/contract/contract.test.ts > Boundaries > accepts exactly 120 minutes and rejects 121
+ ✓ src/contract/contract.test.ts > Boundaries > rejects a start equal to the simulated current time
+ ✓ src/contract/contract.test.ts > Boundaries > allows a booking that ends exactly when the existing booking starts
+ ✓ src/contract/contract.test.ts > Boundaries > reports overlap for containing and contained intervals
+ ✓ src/contract/contract.test.ts > Boundaries > gives validation errors before blocked or overlap reasons
+ ✓ src/contract/contract.test.ts > Boundaries > checks the start time before the duration, as in the accepted plan
+ ✓ src/contract/contract.test.ts > Boundaries > rejects malformed clock values that a loose parser would accept
+ ✓ src/contract/contract.test.ts > Boundaries > puts blocked before overlap
+ ✓ src/contract/contract.test.ts > Boundaries > rejects a booking that would end after midnight
+ ✓ src/contract/contract.test.ts > Invalid input feedback (AC6) > start "" duration "60" gives INVALID_START_TIME
+ ✓ src/contract/contract.test.ts > Invalid input feedback (AC6) > start "25:00" duration "60" gives INVALID_START_TIME
+ ✓ src/contract/contract.test.ts > Invalid input feedback (AC6) > start "11:30" duration "" gives INVALID_DURATION
+ ✓ src/contract/contract.test.ts > Invalid input feedback (AC6) > start "11:30" duration "-5" gives INVALID_DURATION
+ ✓ src/contract/contract.test.ts > Invalid input feedback (AC6) > start "11:30" duration "30.5" gives INVALID_DURATION
+ ✓ src/contract/contract.test.ts > Invalid input feedback (AC6) > start "11:30" duration "abc" gives INVALID_DURATION
+ ✓ src/contract/contract.test.ts > Invalid input feedback (AC6) > start "11:30" duration "<script>" gives INVALID_DURATION
+ ✓ src/contract/contract.test.ts > Separated layers > parses input without deciding availability
+ ✓ src/contract/contract.test.ts > Separated layers > computes availability from a valid request only
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute ""
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute " "
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute "720.5"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute "7e2"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute "720x"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute "-1"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute "1441"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute "99999"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed minute "Infinity"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > accepts integer minute 0
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > accepts integer minute 720
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > accepts integer minute 1440
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed clock ""
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed clock "11:00:30"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed clock "24:00"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed clock "11:60"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed clock "1:00"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > rejects malformed clock "11:x"
+ ✓ src/utils/formValues.test.ts > R1 strict form boundary > converts valid clock fields and formats empty values safely
+ ✓ src/components/App.test.tsx > UI runs the shared cases > 'T1' 'valid free interval'
+ ✓ src/components/App.test.tsx > UI runs the shared cases > 'T2' 'overlap with an existing booking'
+ ✓ src/components/App.test.tsx > UI runs the shared cases > 'T3' 'blocked room'
+ ✓ src/components/App.test.tsx > UI runs the shared cases > 'T4' 'duration = 0'
+ ✓ src/components/App.test.tsx > UI runs the shared cases > 'T5' 'duration = 121 minutes'
+ ✓ src/components/App.test.tsx > UI runs the shared cases > 'T6' 'past start time'
+ ✓ src/components/App.test.tsx > UI runs the shared cases > 'T7' 'adjacent non-overlapping interval'
+ ✓ src/components/App.test.tsx > UI runs the shared cases > T8 shows the same booking list after every check
+ ✓ src/components/App.test.tsx > UI runs the shared cases > hides an old decision when an input changes
+ ✓ src/components/App.test.tsx > UI runs the shared cases > draws the candidate on the timeline only for a valid request
+ ✓ src/components/App.test.tsx > UI runs the shared cases > shows markup-like input as text and never as HTML
+
+ Test Files  5 passed (5)
+      Tests  94 passed (94)
+   Start at  16:36:43
+   Duration  1.86s (transform 172ms, setup 0ms, collect 402ms, tests 350ms, environment 276ms, prepare 182ms)
+
